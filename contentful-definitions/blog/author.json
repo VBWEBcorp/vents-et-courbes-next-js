@@ -1,0 +1,46 @@
+{
+  "sys": {
+    "id": "author"
+  },
+  "name": "Auteur",
+  "description": "Modèle pour les auteurs des articles de blog.",
+  "displayField": "nom",
+  "fields": [
+    {
+      "id": "nom",
+      "name": "Nom de l'auteur",
+      "type": "Symbol",
+      "localized": false,
+      "required": true,
+      "helpText": "Nom complet de l'auteur"
+    },
+    {
+      "id": "bio",
+      "name": "Biographie",
+      "type": "Text",
+      "localized": true,
+      "required": false,
+      "validations": [
+        {
+          "size": {
+            "max": 500
+          }
+        }
+      ],
+      "helpText": "Courte biographie de l'auteur (max 500 caractères)"
+    },
+    {
+      "id": "photo",
+      "name": "Photo de profil",
+      "type": "Link",
+      "localized": false,
+      "required": false,
+      "validations": [
+        {
+          "linkMimetypeGroup": ["image"]
+        }
+      ],
+      "helpText": "Photo de profil de l'auteur"
+    }
+  ]
+}

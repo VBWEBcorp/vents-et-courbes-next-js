@@ -1,0 +1,127 @@
+{
+  "sys": {
+    "id": "formationProPageContent"
+  },
+  "name": "Page Formation Professionnelle",
+  "description": "Contenu pour la page Formation Pro - CAP, formations certifiées, financements.",
+  "displayField": "title",
+  "fields": [
+    {
+      "id": "title",
+      "name": "Titre interne",
+      "type": "Symbol",
+      "localized": false,
+      "required": true,
+      "validations": [
+        {
+          "unique": true
+        }
+      ],
+      "helpText": "Exemple: 'Formation Pro Page'"
+    },
+    {
+      "id": "heroMainTitle",
+      "name": "Hero - Titre principal",
+      "type": "Symbol",
+      "localized": true,
+      "required": true,
+      "helpText": "Titre principal (ex: 'Formations professionnelles à la carte')"
+    },
+    {
+      "id": "heroSubTitle",
+      "name": "Hero - Sous-titre",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "helpText": "Sous-titre optionnel"
+    },
+    {
+      "id": "introQualiopi",
+      "name": "Introduction Qualiopi",
+      "type": "Text",
+      "localized": true,
+      "required": false,
+      "helpText": "Phrase d'introduction avec mention Qualiopi"
+    },
+    {
+      "id": "propositionText",
+      "name": "Proposition formations",
+      "type": "Text",
+      "localized": true,
+      "required": false,
+      "helpText": "Texte de proposition des deux formations"
+    },
+    {
+      "id": "capFormationTitle",
+      "name": "CAP Formation - Titre",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "helpText": "Titre section CAP (ex: 'La Formation CAP Tournage en Céramique')"
+    },
+    {
+      "id": "capFormationDescription",
+      "name": "CAP Formation - Description",
+      "type": "RichText",
+      "localized": true,
+      "required": false,
+      "helpText": "Description détaillée du CAP avec Rich Text"
+    },
+    {
+      "id": "financementsTitle",
+      "name": "Financements - Titre",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "helpText": "Titre section financement (ex: 'Financements Disponibles')"
+    },
+    {
+      "id": "financementsDescription",
+      "name": "Financements - Description",
+      "type": "RichText",
+      "localized": true,
+      "required": false,
+      "helpText": "Description des financements disponibles"
+    },
+    {
+      "id": "financementsDetails",
+      "name": "Financements - Détails",
+      "type": "RichText",
+      "localized": true,
+      "required": false,
+      "helpText": "Détails supplémentaires sur les financements"
+    },
+    {
+      "id": "ctaSections",
+      "name": "Sections Call-to-Action (JSON)",
+      "type": "Object",
+      "localized": false,
+      "required": false,
+      "helpText": "[{'title': 'Une possibilité...', 'description': '...', 'linkText': 'On fait le point', 'linkAction': 'openModal'}]"
+    },
+    {
+      "id": "formationsList",
+      "name": "Liste des formations (JSON)",
+      "type": "Object",
+      "localized": false,
+      "required": false,
+      "helpText": "Détails formations CAP et Créateur (actuellement dans FormationProGrid.tsx)"
+    },
+    {
+      "id": "qualiopiLinkText",
+      "name": "Qualiopi - Texte du lien",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "helpText": "Texte lien Qualiopi (ex: 'Qualiopi ↘')"
+    },
+    {
+      "id": "financingLinkText",
+      "name": "Financement - Texte du lien",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "helpText": "Texte lien financement (ex: 'On fait le point ↘')"
+    }
+  ]
+}

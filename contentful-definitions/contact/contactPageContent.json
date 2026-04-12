@@ -1,0 +1,103 @@
+{
+  "sys": {
+    "id": "contactPageContent"
+  },
+  "name": "Page Contact",
+  "description": "Contenu pour la page Contact - informations, formulaire, carte.",
+  "displayField": "title",
+  "fields": [
+    {
+      "id": "title",
+      "name": "Titre interne",
+      "type": "Symbol",
+      "localized": false,
+      "required": true,
+      "validations": [
+        {
+          "unique": true
+        }
+      ],
+      "helpText": "Exemple: 'Contact Page'"
+    },
+    {
+      "id": "heroMainTitle",
+      "name": "Hero - Titre principal",
+      "type": "Symbol",
+      "localized": true,
+      "required": true,
+      "helpText": "Titre principal (ex: 'Contactez-nous')"
+    },
+    {
+      "id": "heroDescription",
+      "name": "Hero - Description",
+      "type": "Text",
+      "localized": true,
+      "required": false,
+      "helpText": "Description sous le titre (ex: 'Une question, un projet ?...')"
+    },
+    {
+      "id": "contactInfoTitle",
+      "name": "Infos Contact - Titre",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "helpText": "Titre section infos contact"
+    },
+    {
+      "id": "contactInfoData",
+      "name": "Infos Contact - Données (JSON)",
+      "type": "Object",
+      "localized": false,
+      "required": false,
+      "helpText": "[{'icon': 'Mail', 'title': 'Email', 'content': 'contact@...', 'link': 'mailto:...', 'additionalInfo': '...'}]"
+    },
+    {
+      "id": "contactFormTitle",
+      "name": "Formulaire - Titre",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "helpText": "Titre du formulaire de contact"
+    },
+    {
+      "id": "contactFormDescription",
+      "name": "Formulaire - Description",
+      "type": "Text",
+      "localized": true,
+      "required": false,
+      "helpText": "Description du formulaire"
+    },
+    {
+      "id": "contactFormFields",
+      "name": "Formulaire - Labels des champs (JSON)",
+      "type": "Object",
+      "localized": false,
+      "required": false,
+      "helpText": "{'nameLabel': 'Nom *', 'emailLabel': 'Email *', 'phoneLabel': 'Téléphone', 'subjectLabel': 'Sujet', 'messageLabel': 'Message', 'submitButton': 'Envoyer'}"
+    },
+    {
+      "id": "mapTitle",
+      "name": "Plan - Titre",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "helpText": "Titre section carte (ex: 'Nous trouver')"
+    },
+    {
+      "id": "mapDescription",
+      "name": "Plan - Description",
+      "type": "Text",
+      "localized": true,
+      "required": false,
+      "helpText": "Description/adresse pour la carte"
+    },
+    {
+      "id": "mapData",
+      "name": "Plan - Données (JSON)",
+      "type": "Object",
+      "localized": false,
+      "required": false,
+      "helpText": "{'address': '33 rue Danton...', 'mapImage': 'https://...', 'mapAlt': 'Plan...', 'transportInfo': 'Métro...'}"
+    }
+  ]
+}

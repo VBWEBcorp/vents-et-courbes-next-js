@@ -1,0 +1,127 @@
+{
+  "sys": {
+    "id": "stagesPageContent"
+  },
+  "name": "Page Stages",
+  "description": "Contenu pour la page Stages - stages intensifs, carte cadeau, financement.",
+  "displayField": "title",
+  "fields": [
+    {
+      "id": "title",
+      "name": "Titre interne",
+      "type": "Symbol",
+      "localized": false,
+      "required": true,
+      "validations": [
+        {
+          "unique": true
+        }
+      ],
+      "helpText": "Exemple: 'Stages Page'"
+    },
+    {
+      "id": "heroMainTitle",
+      "name": "Hero - Titre principal",
+      "type": "Symbol",
+      "localized": true,
+      "required": true,
+      "helpText": "Titre principal (ex: 'Nos stages à la carte')"
+    },
+    {
+      "id": "heroSubTitle",
+      "name": "Hero - Sous-titre",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "helpText": "Sous-titre (ex: 'Stages intensifs')"
+    },
+    {
+      "id": "carteCadeauTitle",
+      "name": "Carte cadeau - Titre",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "helpText": "Titre section carte cadeau"
+    },
+    {
+      "id": "carteCadeauDescription",
+      "name": "Carte cadeau - Description",
+      "type": "RichText",
+      "localized": true,
+      "required": false,
+      "helpText": "Description carte cadeau avec Rich Text"
+    },
+    {
+      "id": "carteCadeauDetails",
+      "name": "Carte cadeau - Détails",
+      "type": "RichText",
+      "localized": true,
+      "required": false,
+      "helpText": "Détails supplémentaires carte cadeau"
+    },
+    {
+      "id": "decouvrirTitle",
+      "name": "Découvrir - Titre",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "helpText": "Titre section découverte"
+    },
+    {
+      "id": "decouvrirDescription",
+      "name": "Découvrir - Description",
+      "type": "RichText",
+      "localized": true,
+      "required": false,
+      "helpText": "Description section découverte avec Rich Text"
+    },
+    {
+      "id": "financementTitle",
+      "name": "Financement - Titre",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "helpText": "Titre section financement"
+    },
+    {
+      "id": "financementDescription",
+      "name": "Financement - Description",
+      "type": "RichText",
+      "localized": true,
+      "required": false,
+      "helpText": "Description financement avec Rich Text"
+    },
+    {
+      "id": "financingLinkText",
+      "name": "Financement - Texte du lien",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "helpText": "Texte du lien financement"
+    },
+    {
+      "id": "qualiopiLinkText",
+      "name": "Qualiopi - Texte du lien",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "helpText": "Texte lien certification Qualiopi"
+    },
+    {
+      "id": "actionButtons",
+      "name": "Boutons d'action (JSON)",
+      "type": "Object",
+      "localized": false,
+      "required": false,
+      "helpText": "[{'text': 'Financement possible', 'color': 'gray-800', 'action': 'openFinancementModal'}]"
+    },
+    {
+      "id": "stagesList",
+      "name": "Liste des stages (JSON)",
+      "type": "Object",
+      "localized": false,
+      "required": false,
+      "helpText": "Liste complète des stages avec détails (actuellement codé en dur)"
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "sys": {
+    "id": "aboutPageContent"
+  },
+  "name": "Page À propos",
+  "description": "Contenu pour la page À propos - histoire, équipe, témoignages.",
+  "displayField": "title",
+  "fields": [
+    {
+      "id": "title",
+      "name": "Titre interne",
+      "type": "Symbol",
+      "localized": false,
+      "required": true,
+      "validations": [
+        {
+          "unique": true
+        }
+      ],
+      "helpText": "Exemple: 'About Page'"
+    },
+    {
+      "id": "heroMainTitle",
+      "name": "Hero - Titre principal",
+      "type": "Symbol",
+      "localized": true,
+      "required": true,
+      "helpText": "Titre principal (ex: 'L'histoire de Vents & Courbes')"
+    },
+    {
+      "id": "heroSubTitle",
+      "name": "Hero - Sous-titre",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "helpText": "Sous-titre (ex: 'Notre passion')"
+    },
+    {
+      "id": "heroDescription",
+      "name": "Hero - Description",
+      "type": "Text",
+      "localized": true,
+      "required": false,
+      "helpText": "Description courte sous le titre"
+    },
+    {
+      "id": "heroCtaButtons",
+      "name": "Hero - Boutons d'action (JSON)",
+      "type": "Object",
+      "localized": false,
+      "required": false,
+      "helpText": "[{'text': 'Découvrir l\\'équipe', 'action': 'scrollToTeam'}, {'text': 'Nos formations', 'action': 'goToFormations'}]"
+    },
+    {
+      "id": "presentationTitle",
+      "name": "Présentation - Titre",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "helpText": "Titre section présentation"
+    },
+    {
+      "id": "presentationIntro",
+      "name": "Présentation - Introduction",
+      "type": "RichText",
+      "localized": true,
+      "required": false,
+      "helpText": "Paragraphe d'introduction avec texte enrichi"
+    },
+    {
+      "id": "presentationStory",
+      "name": "Présentation - Histoire (JSON)",
+      "type": "Object",
+      "localized": false,
+      "required": false,
+      "helpText": "[{'title': 'Une approche...', 'content': 'Description', 'style': 'primary-bg'}]"
+    },
+    {
+      "id": "presentationFeatures",
+      "name": "Présentation - Caractéristiques (JSON)",
+      "type": "Object",
+      "localized": false,
+      "required": false,
+      "helpText": "[{'icon': 'Award', 'title': 'Centre certifié', 'description': 'Formation...'}]"
+    },
+    {
+      "id": "presentationCta",
+      "name": "Présentation - Call-to-Action (JSON)",
+      "type": "Object",
+      "localized": false,
+      "required": false,
+      "helpText": "{'title': 'Question...', 'description': 'Réponse', 'buttonText': 'Échanger', 'buttonLink': '/contact'}"
+    },
+    {
+      "id": "equipeTitle",
+      "name": "Équipe - Titre",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "helpText": "Titre section équipe (ex: 'Notre équipe')"
+    },
+    {
+      "id": "equipeDescription",
+      "name": "Équipe - Description",
+      "type": "Text",
+      "localized": true,
+      "required": false,
+      "helpText": "Description de l'équipe"
+    },
+    {
+      "id": "equipeMembers",
+      "name": "Équipe - Membres (JSON)",
+      "type": "Object",
+      "localized": false,
+      "required": false,
+      "helpText": "Actuellement géré directement dans le code AboutTeam.tsx"
+    },
+    {
+      "id": "temoignagesTitle",
+      "name": "Témoignages - Titre",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "helpText": "Titre section témoignages (ex: 'Avis Google')"
+    },
+    {
+      "id": "temoignagesDescription",
+      "name": "Témoignages - Description",
+      "type": "Text",
+      "localized": true,
+      "required": false,
+      "helpText": "Description des témoignages"
+    },
+    {
+      "id": "temoignagesData",
+      "name": "Témoignages - Données (JSON)",
+      "type": "Object",
+      "localized": false,
+      "required": false,
+      "helpText": "Actuellement géré directement dans le code AboutTestimonials.tsx"
+    }
+  ]
+}

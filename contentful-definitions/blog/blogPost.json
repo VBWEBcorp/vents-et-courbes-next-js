@@ -1,0 +1,123 @@
+{
+  "sys": {
+    "id": "blogPost"
+  },
+  "name": "Article de blog",
+  "description": "Modèle pour les articles du blog Vents & Courbes.",
+  "displayField": "titre",
+  "fields": [
+    {
+      "id": "titre",
+      "name": "Titre de l'article",
+      "type": "Symbol",
+      "localized": true,
+      "required": true,
+      "helpText": "Titre principal de l'article"
+    },
+    {
+      "id": "slug",
+      "name": "Slug (URL)",
+      "type": "Symbol",
+      "localized": false,
+      "required": true,
+      "validations": [
+        {
+          "unique": true
+        },
+        {
+          "regexp": {
+            "pattern": "^[a-z0-9-]+$"
+          }
+        }
+      ],
+      "helpText": "URL de l'article (ex: 'mon-article-blog'). Uniquement lettres minuscules, chiffres et tirets."
+    },
+    {
+      "id": "dateDePublication",
+      "name": "Date de publication",
+      "type": "Date",
+      "localized": false,
+      "required": true,
+      "helpText": "Date de publication de l'article"
+    },
+    {
+      "id": "auteur",
+      "name": "Auteur",
+      "type": "Link",
+      "localized": false,
+      "required": true,
+      "validations": [
+        {
+          "linkContentType": ["author"]
+        }
+      ],
+      "helpText": "Sélectionner l'auteur de l'article"
+    },
+    {
+      "id": "imagePrincipale",
+      "name": "Image principale",
+      "type": "Link",
+      "localized": false,
+      "required": true,
+      "validations": [
+        {
+          "linkMimetypeGroup": ["image"]
+        }
+      ],
+      "helpText": "Image de couverture de l'article"
+    },
+    {
+      "id": "extrait",
+      "name": "Extrait",
+      "type": "Text",
+      "localized": true,
+      "required": true,
+      "validations": [
+        {
+          "size": {
+            "max": 300
+          }
+        }
+      ],
+      "helpText": "Résumé de l'article (maximum 300 caractères)"
+    },
+    {
+      "id": "contenu",
+      "name": "Contenu de l'article",
+      "type": "RichText",
+      "localized": true,
+      "required": true,
+      "helpText": "Contenu principal de l'article avec mise en forme riche"
+    },
+    {
+      "id": "titreSeo",
+      "name": "Titre SEO",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "validations": [
+        {
+          "size": {
+            "max": 60
+          }
+        }
+      ],
+      "helpText": "Titre optimisé pour les moteurs de recherche (max 60 caractères)"
+    },
+    {
+      "id": "descriptionSeo",
+      "name": "Description SEO",
+      "type": "Text",
+      "localized": true,
+      "required": false,
+      "validations": [
+        {
+          "size": {
+            "max": 160
+          }
+        }
+      ],
+      "helpText": "Description pour les moteurs de recherche (max 160 caractères)"
+    }
+  ]
+}

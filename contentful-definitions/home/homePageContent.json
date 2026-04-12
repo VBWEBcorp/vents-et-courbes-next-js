@@ -1,0 +1,173 @@
+{
+  "sys": {
+    "id": "homePageContent"
+  },
+  "name": "Page d'accueil",
+  "description": "Contenu éditable pour la page d'accueil du site Vents & Courbes.",
+  "displayField": "title",
+  "fields": [
+    {
+      "id": "title",
+      "name": "Titre interne (pour Contentful)",
+      "type": "Symbol",
+      "localized": false,
+      "required": true,
+      "validations": [
+        {
+          "unique": true
+        }
+      ],
+      "helpText": "Exemple: 'Home Page' - utilisé pour identifier cette entrée dans Contentful"
+    },
+    {
+      "id": "heroMainTitle",
+      "name": "Hero - Titre principal",
+      "type": "Symbol",
+      "localized": true,
+      "required": true,
+      "helpText": "Titre principal affiché en grand (ex: 'Atelier de céramique')"
+    },
+    {
+      "id": "heroSubTitle",
+      "name": "Hero - Sous-titre",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "helpText": "Sous-titre sous le titre principal (ex: '& Centre de formation')"
+    },
+    {
+      "id": "heroThirdTitle",
+      "name": "Hero - Troisième titre",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "helpText": "Troisième titre sous le titre principal (ex: 'Centre d'examen')"
+    },
+    {
+      "id": "heroDescription",
+      "name": "Hero - Description",
+      "type": "Text",
+      "localized": true,
+      "required": false,
+      "helpText": "Description sous le titre (ex: 'Un espace de création dédié à la pratique de la céramique à Paris')"
+    },
+    {
+      "id": "heroCta1Text",
+      "name": "Hero - Texte bouton principal",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "helpText": "Texte du premier bouton (ex: 'Découvrir nos cours & stages')"
+    },
+    {
+      "id": "heroCta1Link",
+      "name": "Hero - Lien bouton principal",
+      "type": "Symbol",
+      "required": false,
+      "helpText": "Lien du premier bouton (ex: '/cours' ou '#modal')"
+    },
+    {
+      "id": "heroCta2Text",
+      "name": "Hero - Texte bouton secondaire",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "helpText": "Texte du second bouton (ex: 'Formation professionnelle')"
+    },
+    {
+      "id": "heroCta2Link",
+      "name": "Hero - Lien bouton secondaire",
+      "type": "Symbol",
+      "required": false,
+      "helpText": "Lien du second bouton (ex: '/formation-pro')"
+    },
+    {
+      "id": "featuresTitle",
+      "name": "Section Services - Titre",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "helpText": "Titre de la section des services (optionnel)"
+    },
+    {
+      "id": "featuresDescription",
+      "name": "Section Services - Description",
+      "type": "Text",
+      "localized": true,
+      "required": false,
+      "helpText": "Description de la section des services (optionnel)"
+    },
+    {
+      "id": "featuresList",
+      "name": "Services - Liste (JSON)",
+      "type": "Object",
+      "localized": false,
+      "required": false,
+      "helpText": "Format JSON: [{'icon': 'GraduationCap', 'title': 'Formation', 'description': 'Cours adaptés'}]"
+    },
+    {
+      "id": "aboutTitle",
+      "name": "Section À propos - Titre",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "helpText": "Titre de la section À propos (ex: 'Atelier de céramique à Paris')"
+    },
+    {
+      "id": "aboutDescription",
+      "name": "Section À propos - Description",
+      "type": "Text",
+      "localized": true,
+      "required": false,
+      "helpText": "Description courte de la section À propos"
+    },
+    {
+      "id": "aboutMainContent",
+      "name": "À propos - Contenu principal",
+      "type": "RichText",
+      "localized": true,
+      "required": false,
+      "helpText": "Contenu rich text détaillé sur l'atelier"
+    },
+    {
+      "id": "aboutProfessionalFeatures",
+      "name": "À propos - Caractéristiques (JSON)",
+      "type": "Object",
+      "localized": false,
+      "required": false,
+      "helpText": "Format JSON: [{'icon': 'Award', 'title': 'Équipe expérimentée', 'description': 'Plus de 15 ans...'}]"
+    },
+    {
+      "id": "galleryTitle",
+      "name": "Galerie - Titre",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "helpText": "Titre de la section galerie (ex: 'L'atelier en images')"
+    },
+    {
+      "id": "galleryDescription",
+      "name": "Galerie - Description",
+      "type": "Text",
+      "localized": true,
+      "required": false,
+      "helpText": "Description de la galerie"
+    },
+    {
+      "id": "blogTitle",
+      "name": "Blog - Titre",
+      "type": "Symbol",
+      "localized": true,
+      "required": false,
+      "helpText": "Titre de la section blog (ex: 'Nos actualités')"
+    },
+    {
+      "id": "blogDescription",
+      "name": "Blog - Description",
+      "type": "Text",
+      "localized": true,
+      "required": false,
+      "helpText": "Description de la section blog"
+    }
+  ]
+}

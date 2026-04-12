@@ -1,0 +1,39 @@
+{
+  "sys": {
+    "id": "blogPageContent"
+  },
+  "name": "Page Blog",
+  "description": "Contenu pour la page Blog - liste des articles.",
+  "displayField": "title",
+  "fields": [
+    {
+      "id": "title",
+      "name": "Titre interne",
+      "type": "Symbol",
+      "localized": false,
+      "required": true,
+      "validations": [
+        {
+          "unique": true
+        }
+      ],
+      "helpText": "Exemple: 'Blog Page'"
+    },
+    {
+      "id": "heroMainTitle",
+      "name": "Hero - Titre principal",
+      "type": "Symbol",
+      "localized": true,
+      "required": true,
+      "helpText": "Titre principal (ex: 'Nos actualités')"
+    },
+    {
+      "id": "heroDescription",
+      "name": "Hero - Description",
+      "type": "Text",
+      "localized": true,
+      "required": false,
+      "helpText": "Description sous le titre (ex: 'Découvrez nos derniers articles...')"
+    }
+  ]
+}
