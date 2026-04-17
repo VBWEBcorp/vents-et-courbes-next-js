@@ -1,6 +1,5 @@
 import BlogPostDetail from '@/views/BlogPostDetail';
 
-export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
-  const resolvedParams = await params;
-  return <BlogPostDetail params={resolvedParams} />;
+export default function BlogPostPage({ params }: { params: { slug: string } }) {
+  return <BlogPostDetail params={params} />;
 }
