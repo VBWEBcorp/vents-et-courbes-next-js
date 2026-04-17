@@ -360,7 +360,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({ pageType = 'home', blog
     };
   };
 
-  const structuredDataArray = [
+  const structuredDataArray: Array<Record<string, unknown> | null> = [
     getLocalBusinessStructuredData(),
     getOrganizationStructuredData(),
     getWebSiteStructuredData(),
