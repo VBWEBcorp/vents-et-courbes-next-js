@@ -131,7 +131,7 @@ const BlogManagement = () => {
 
       console.log('💾 Données à sauvegarder:', {
         ...dataToSave,
-        content: `[${dataToSave.content.length} caractères]`
+        content: `[${dataToSave.content?.length ?? 0} caractères]`
       });
       console.log('🖼️ URL Image:', dataToSave.image_url);
 

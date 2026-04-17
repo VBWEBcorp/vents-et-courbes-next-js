@@ -10,7 +10,7 @@ interface AboutHeroProps {
 }
 
 const AboutHero: React.FC<AboutHeroProps> = ({ content }) => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const scrollToTeam = () => {
     const teamSection = document.getElementById('team-section');
@@ -20,7 +20,7 @@ const AboutHero: React.FC<AboutHeroProps> = ({ content }) => {
   };
 
   const goToFormations = () => {
-    navigate(content.hero_cta2?.button_link || '/cours');
+    router.push(content.hero_cta2?.button_link || '/cours');
   };
 
   return (
