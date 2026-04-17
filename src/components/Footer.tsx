@@ -17,9 +17,11 @@ const Footer = () => {
             <meta itemProp="postalCode" content="93310" />
             <meta itemProp="addressCountry" content="FR" />
           </div>
-          <meta itemProp="aggregateRating" itemScope itemType="https://schema.org/AggregateRating" />
-          <meta itemProp="ratingValue" content="4.9" />
-          <meta itemProp="reviewCount" content="938" />
+          <div itemProp="aggregateRating" itemScope itemType="https://schema.org/AggregateRating">
+            <meta itemProp="ratingValue" content="4.9" />
+            <meta itemProp="reviewCount" content="938" />
+            <meta itemProp="bestRating" content="5" />
+          </div>
         </div>
         
         {/* Logos côte à côte */}

@@ -68,7 +68,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({ pageType = 'home', blog
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.9",
-        "reviewCount": "7",
+        "reviewCount": "938",
         "bestRating": "5",
         "worstRating": "1"
       },
