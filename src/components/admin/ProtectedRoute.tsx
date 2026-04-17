@@ -1,5 +1,6 @@
+'use client';
 import React, { useEffect, useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { getCurrentUser } from '../../services/supabaseAdmin';
 
 interface ProtectedRouteProps {
@@ -7,6 +8,7 @@ interface ProtectedRouteProps {
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
+  const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -16,11 +18,15 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
 
   const checkAuth = async () => {
     const { user } = await getCurrentUser();
-    setIsAuthenticated(!!user);
+    if (!user) {
+      router.replace('/admin/login');
+    } else {
+      setIsAuthenticated(true);
+    }
     setLoading(false);
   };
 
-  if (loading) {
+  if (loading || !isAuthenticated) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-stone-100 flex items-center justify-center">
         <div className="text-center">
@@ -29,10 +35,6 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
         </div>
       </div>
     );
-  }
-
-  if (!isAuthenticated) {
-    return <Navigate to="/admin/login" replace />;
   }
 
   return <>{children}</>;

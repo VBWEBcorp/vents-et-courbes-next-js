@@ -1,5 +1,6 @@
+'use client';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { SectionContent } from '../../services/pagesContent';
 
@@ -13,7 +14,7 @@ const ContactHero: React.FC<ContactHeroProps> = ({ content }) => {
       <div className="max-w-4xl mx-auto text-center">
         <div className="mb-8 text-left">
           <Link
-            to="/"
+            href="/"
             className="inline-flex items-center text-gray-600 hover:text-primary-400 transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-2" strokeWidth={1.5} />

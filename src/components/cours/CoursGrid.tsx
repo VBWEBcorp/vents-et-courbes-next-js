@@ -1,5 +1,6 @@
+'use client';
 import React, { useRef, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { getAllCours, Cours } from '../../services/supabaseAdmin';
 
 interface CoursGridProps {
@@ -123,7 +124,7 @@ const CoursGrid: React.FC<CoursGridProps> = ({ activeFilter = 'all', onFilterCha
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-6 lg:gap-8 cours-grid">
           {filteredCours.map((course, index) => (
             <Link
-              to={`/reservation/${course.reservation_slug}`}
+              href={`/reservation/${course.reservation_slug}`}
               key={course.id}
               className="block bg-white rounded-2xl overflow-hidden shadow-lg card-hover course-item hover:shadow-xl transition-all duration-500"
               style={{

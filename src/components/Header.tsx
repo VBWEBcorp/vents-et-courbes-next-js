@@ -1,5 +1,6 @@
+'use client';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import EspaceAdherentModal from './EspaceAdherentModal';
 
@@ -22,7 +23,7 @@ const Header = () => {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center">
-              <Link to="/" onClick={closeMobileMenu} className="smooth-hover">
+              <Link href="/" onClick={closeMobileMenu} className="smooth-hover">
                 <img 
                   src="https://i.ibb.co/ZzWhrH6J/logo-ventsetcourbes.png" 
                   alt="Vents et Courbes"
@@ -33,31 +34,31 @@ const Header = () => {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
-              <Link to="/cours" className="text-custom-dark hover:text-primary-400 font-normal relative group smooth-hover">
+              <Link href="/cours" className="text-custom-dark hover:text-primary-400 font-normal relative group smooth-hover">
                 <span className="relative z-10">Loisirs</span>
                 <div className="absolute inset-0 bg-primary-400/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300"></div>
               </Link>
-              <Link to="/stages" className="text-custom-dark hover:text-primary-400 font-normal relative group smooth-hover">
+              <Link href="/stages" className="text-custom-dark hover:text-primary-400 font-normal relative group smooth-hover">
                 <span className="relative z-10">Stages</span>
                 <div className="absolute inset-0 bg-primary-400/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300"></div>
               </Link>
-              <Link to="/formation-pro" className="text-custom-dark hover:text-primary-400 font-normal relative group smooth-hover">
+              <Link href="/formation-pro" className="text-custom-dark hover:text-primary-400 font-normal relative group smooth-hover">
                 <span className="relative z-10">Formation Pro</span>
                 <div className="absolute inset-0 bg-primary-400/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300"></div>
               </Link>
-              <Link to="/atelier-partage" className="text-custom-dark hover:text-primary-400 font-normal relative group smooth-hover">
+              <Link href="/atelier-partage" className="text-custom-dark hover:text-primary-400 font-normal relative group smooth-hover">
                 <span className="relative z-10">Atelier Partage</span>
                 <div className="absolute inset-0 bg-primary-400/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300"></div>
               </Link>
-              <Link to="/a-propos" className="text-custom-dark hover:text-primary-400 font-normal relative group smooth-hover">
+              <Link href="/a-propos" className="text-custom-dark hover:text-primary-400 font-normal relative group smooth-hover">
                 <span className="relative z-10">À propos</span>
                 <div className="absolute inset-0 bg-primary-400/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300"></div>
               </Link>
-              <Link to="/blog" className="text-custom-dark hover:text-primary-400 font-normal relative group smooth-hover">
+              <Link href="/blog" className="text-custom-dark hover:text-primary-400 font-normal relative group smooth-hover">
                 <span className="relative z-10">Blog</span>
                 <div className="absolute inset-0 bg-primary-400/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300"></div>
               </Link>
-              <Link to="/contact" className="text-custom-dark hover:text-primary-400 font-normal relative group smooth-hover">
+              <Link href="/contact" className="text-custom-dark hover:text-primary-400 font-normal relative group smooth-hover">
                 <span className="relative z-10">Contact</span>
                 <div className="absolute inset-0 bg-primary-400/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300"></div>
               </Link>
@@ -98,49 +99,49 @@ const Header = () => {
           <div className="absolute top-full left-0 right-0 mt-2 mx-4 bg-white/95 backdrop-blur-md rounded-2xl shadow-lg border border-white/20 md:hidden modal-enter">
             <nav className="px-6 py-6 space-y-4">
               <Link 
-                to="/cours" 
+                href="/cours" 
                 onClick={closeMobileMenu}
                 className="block text-custom-dark hover:text-primary-400 font-normal py-3 text-lg hover:bg-primary-400/10 rounded-lg px-3 smooth-hover"
               >
                 Loisirs
               </Link>
               <Link 
-                to="/stages" 
+                href="/stages" 
                 onClick={closeMobileMenu}
                 className="block text-custom-dark hover:text-primary-400 font-normal py-3 text-lg hover:bg-primary-400/10 rounded-lg px-3 smooth-hover"
               >
                 Stages
               </Link>
               <Link
-                to="/formation-pro"
+                href="/formation-pro"
                 onClick={closeMobileMenu}
                 className="block text-custom-dark hover:text-primary-400 font-normal py-3 text-lg hover:bg-primary-400/10 rounded-lg px-3 smooth-hover"
               >
                 Formation Pro
               </Link>
               <Link
-                to="/atelier-partage"
+                href="/atelier-partage"
                 onClick={closeMobileMenu}
                 className="block text-custom-dark hover:text-primary-400 font-normal py-3 text-lg hover:bg-primary-400/10 rounded-lg px-3 smooth-hover"
               >
                 Atelier Partage
               </Link>
               <Link
-                to="/a-propos" 
+                href="/a-propos" 
                 onClick={closeMobileMenu}
                 className="block text-custom-dark hover:text-primary-400 font-normal py-3 text-lg hover:bg-primary-400/10 rounded-lg px-3 smooth-hover"
               >
                 À propos
               </Link>
               <Link 
-                to="/blog" 
+                href="/blog" 
                 onClick={closeMobileMenu}
                 className="block text-custom-dark hover:text-primary-400 font-normal py-3 text-lg hover:bg-primary-400/10 rounded-lg px-3 smooth-hover"
               >
                 Blog
               </Link>
               <Link 
-                to="/contact" 
+                href="/contact" 
                 onClick={closeMobileMenu}
                 className="block text-custom-dark hover:text-primary-400 font-normal py-3 text-lg hover:bg-primary-400/10 rounded-lg px-3 smooth-hover"
               >

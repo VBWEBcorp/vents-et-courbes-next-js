@@ -1,6 +1,7 @@
-import { useLocation } from 'react-router-dom';
+'use client';
+import { usePathname } from 'next/navigation';
 
 export const useIsAdminPage = () => {
-  const location = useLocation();
-  return location.pathname.startsWith('/admin');
+  const pathname = usePathname();
+  return pathname.startsWith('/admin');
 };

@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { Award, Users, BookOpen, MapPin } from 'lucide-react';
 import { SectionContent } from '../../services/pagesContent';

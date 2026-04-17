@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { GraduationCap, CheckCircle, Palette, MapPin, Gift, CreditCard } from 'lucide-react';
 import { SectionContent } from '../services/pagesContent';

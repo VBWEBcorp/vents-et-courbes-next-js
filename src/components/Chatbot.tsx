@@ -1,3 +1,4 @@
+'use client';
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Phone, Mail } from 'lucide-react';
 import { useIsAdminPage } from '../hooks/useIsAdminPage';
@@ -45,7 +46,7 @@ const Chatbot = () => {
     setIsLoading(true);
 
     try {
-      const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chatbot`;
+      const apiUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/chatbot`;
       const conversationHistory = updatedMessages
         .filter((m) => m !== WELCOME_MESSAGE)
         .map((m) => ({ role: m.role, content: m.content }));
@@ -53,7 +54,7 @@ const Chatbot = () => {
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+          'Authorization': `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ messages: conversationHistory }),

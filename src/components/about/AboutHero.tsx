@@ -1,5 +1,7 @@
+'use client';
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
 import { SectionContent } from '../../services/pagesContent';
 
@@ -26,7 +28,7 @@ const AboutHero: React.FC<AboutHeroProps> = ({ content }) => {
       <div className="max-w-4xl mx-auto text-center">
         <div className="absolute top-32 left-4 md:left-6">
           <Link
-            to="/"
+            href="/"
             className="inline-flex items-center text-gray-600 hover:text-primary-400 transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-2" strokeWidth={1.5} />

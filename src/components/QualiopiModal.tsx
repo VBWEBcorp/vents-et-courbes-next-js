@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { X, Award } from 'lucide-react';
 

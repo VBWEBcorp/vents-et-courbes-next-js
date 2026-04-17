@@ -1,3 +1,4 @@
+'use client';
 import React, { useState, useEffect } from 'react';
 import { X, Shield, Eye, Target } from 'lucide-react';
 import { useIsAdminPage } from '../hooks/useIsAdminPage';

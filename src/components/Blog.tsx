@@ -1,6 +1,7 @@
+'use client';
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Calendar, ArrowRight, User } from 'lucide-react';
 import { getAllArticles, ArticleBlog } from '../services/supabaseAdmin';
 
@@ -104,7 +105,7 @@ const Blog: React.FC<BlogProps> = ({ title, description }) => {
                       )}
                     </div>
 
-                    <Link to={`/blog/${article.slug}`}>
+                    <Link href={`/blog/${article.slug}`}>
                       <h3 className="text-lg md:text-xl font-medium text-gray-900 mb-3 leading-tight hover:text-primary-400 transition-colors">
                         {article.title}
                       </h3>
@@ -115,7 +116,7 @@ const Blog: React.FC<BlogProps> = ({ title, description }) => {
                     </p>
 
                     <Link
-                      to={`/blog/${article.slug}`}
+                      href={`/blog/${article.slug}`}
                       className="inline-flex items-center text-primary-400 hover:text-primary-500 font-medium transition-colors group text-sm md:text-base"
                     >
                       Lire la suite

@@ -1,6 +1,7 @@
+'use client';
 import React, { useState } from 'react';
 import { X, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 interface CoursStagesModalProps {
   isOpen: boolean;
@@ -152,7 +153,7 @@ const CoursStagesModal: React.FC<CoursStagesModalProps> = ({ isOpen, onClose }) 
       {items.map((item, index) => (
         <div key={index} className="group">
           <Link
-            to={item.link}
+            href={item.link}
             onClick={onClose}
             className="block bg-stone-50 hover:bg-stone-100 rounded-lg p-4 transition-colors"
           >
@@ -250,7 +251,7 @@ const CoursStagesModal: React.FC<CoursStagesModalProps> = ({ isOpen, onClose }) 
               {/* Bouton discret Voir tous les cours */}
               <div className="mt-6 text-center">
                 <Link
-                  to="/cours"
+                  href="/cours"
                   onClick={onClose}
                   className="inline-flex items-center text-gray-500 hover:text-primary-400 text-sm font-medium transition-colors"
                 >
@@ -275,7 +276,7 @@ const CoursStagesModal: React.FC<CoursStagesModalProps> = ({ isOpen, onClose }) 
               {/* Bouton discret Voir tous les stages */}
               <div className="mt-6 text-center">
                 <Link
-                  to="/stages"
+                  href="/stages"
                   onClick={onClose}
                   className="inline-flex items-center text-gray-500 hover:text-primary-400 text-sm font-medium transition-colors"
                 >
@@ -300,7 +301,7 @@ const CoursStagesModal: React.FC<CoursStagesModalProps> = ({ isOpen, onClose }) 
               {/* Bouton discret Voir toutes les formations pro */}
               <div className="mt-6 text-center">
                 <Link
-                  to="/formation-pro"
+                  href="/formation-pro"
                   onClick={onClose}
                   className="inline-flex items-center text-gray-500 hover:text-primary-400 text-sm font-medium transition-colors"
                 >
@@ -317,7 +318,7 @@ const CoursStagesModal: React.FC<CoursStagesModalProps> = ({ isOpen, onClose }) 
             Besoin d'aide pour choisir ?
           </p>
           <Link
-            to="/contact"
+            href="/contact"
             onClick={onClose}
             className="text-primary-400 hover:text-primary-500 font-medium text-sm"
           >

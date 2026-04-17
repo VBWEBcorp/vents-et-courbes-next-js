@@ -1,5 +1,6 @@
+'use client';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ArrowLeft, MapPin, Clock, Box, Layers, Wrench, Palette, Download } from 'lucide-react';
 
 const equipment = [
@@ -16,7 +17,7 @@ const AtelierPartageHero: React.FC = () => {
       <div className="max-w-4xl mx-auto">
         <div className="mb-8">
           <Link
-            to="/"
+            href="/"
             className="inline-flex items-center text-gray-600 hover:text-primary-400 transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-2" strokeWidth={1.5} />

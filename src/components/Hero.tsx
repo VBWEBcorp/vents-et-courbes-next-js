@@ -1,6 +1,7 @@
+'use client';
 import React from 'react';
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import CoursStagesModal from './CoursStagesModal';
 import { getPageContentBySection } from '../services/pagesContent';
 
@@ -124,7 +125,7 @@ const Hero: React.FC<HeroProps> = ({
             {cta1Text || "Découvrir nos cours & stages"}
           </button>
           <Link
-            to={cta2Link || "/formation-pro"}
+            href={cta2Link || "/formation-pro"}
             className="w-full sm:w-auto border-2 border-white text-white hover:bg-white hover:text-primary-400 px-6 md:px-8 py-3 md:py-3 rounded-full text-base md:text-lg min-w-[280px] sm:min-w-[220px] font-normal btn-animate text-center inline-block shadow-lg backdrop-blur-sm"
           >
             {cta2Text || "Formation professionnelle"}

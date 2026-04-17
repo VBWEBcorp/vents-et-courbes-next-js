@@ -1,5 +1,7 @@
+'use client';
 import React, { useState } from 'react';
-import { useNavigate, useLocation, Link } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter, usePathname } from 'next/navigation';
 import {
   LayoutDashboard,
   Calendar,
@@ -19,13 +21,13 @@ interface AdminLayoutProps {
 }
 
 const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subtitle }) => {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const router = useRouter();
+  const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleLogout = async () => {
     await signOutAdmin();
-    navigate('/admin/login');
+    router.push('/admin/login');
   };
 
   const menuItems = [
@@ -63,9 +65,9 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subtitle }) 
 
   const isActive = (path: string) => {
     if (path === '/admin') {
-      return location.pathname === path;
+      return pathname === path;
     }
-    return location.pathname.startsWith(path);
+    return pathname.startsWith(path);
   };
 
   return (
@@ -92,7 +94,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subtitle }) 
             return (
               <Link
                 key={item.path}
-                to={item.path}
+                href={item.path}
                 className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all ${
                   active
                     ? `${item.color} font-medium`
@@ -159,7 +161,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subtitle }) 
                 return (
                   <Link
                     key={item.path}
-                    to={item.path}
+                    href={item.path}
                     onClick={() => setSidebarOpen(false)}
                     className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all ${
                       active

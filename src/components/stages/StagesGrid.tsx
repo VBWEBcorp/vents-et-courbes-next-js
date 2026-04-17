@@ -1,5 +1,6 @@
+'use client';
 import React, { useRef, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { getAllStages, Stage } from '../../services/supabaseAdmin';
 
 interface StagesGridProps {
@@ -133,7 +134,7 @@ const StagesGrid: React.FC<StagesGridProps> = ({ activeFilter = 'all', onFilterC
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-6 lg:gap-8 stages-grid">
           {filteredStages.map((stage, index) => (
             <Link
-              to={`/reservation/${stage.reservation_slug}`}
+              href={`/reservation/${stage.reservation_slug}`}
               key={stage.id}
               className="block bg-white rounded-2xl overflow-hidden shadow-lg card-hover stage-item hover:shadow-xl transition-all duration-500"
               style={{
