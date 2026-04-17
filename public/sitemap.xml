@@ -1,163 +1,219 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Pages statiques principales -->
   <url>
     <loc>https://ventsetcourbes.org/</loc>
-    <lastmod>2025-09-26</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/cours</loc>
-    <lastmod>2025-09-26</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/stages</loc>
-    <lastmod>2025-09-26</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/formation-pro</loc>
-    <lastmod>2025-09-26</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ventsetcourbes.org/atelier-partage</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/a-propos</loc>
-    <lastmod>2025-09-26</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/contact</loc>
-    <lastmod>2025-09-26</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/blog</loc>
-    <lastmod>2025-09-26</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- Pages de réservation de cours/stages (dynamiques) -->
   <url>
-    <loc>https://ventsetcourbes.org/reservation/tournage-trimestriel</loc>
-    <lastmod>2025-09-26</lastmod>
+    <loc>https://ventsetcourbes.org/blog/sechage-ceramique-eviter-fissures</loc>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ventsetcourbes.org/reservation/tournage-annuel</loc>
-    <lastmod>2025-09-26</lastmod>
+    <loc>https://ventsetcourbes.org/blog/tournassage-ceramique-precision</loc>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ventsetcourbes.org/reservation/modelage-annuel</loc>
-    <lastmod>2025-09-26</lastmod>
+    <loc>https://ventsetcourbes.org/blog/centrage-tour-tournage</loc>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ventsetcourbes.org/reservation/modelage-trimestriel</loc>
-    <lastmod>2025-09-26</lastmod>
+    <loc>https://ventsetcourbes.org/blog/etats-terre-ceramique-guide</loc>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ventsetcourbes.org/reservation/initiation-emaillage</loc>
-    <lastmod>2025-09-26</lastmod>
+    <loc>https://ventsetcourbes.org/blog/modelage-ceramique-sans-tour</loc>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ventsetcourbes.org/reservation/modelage-single</loc>
-    <lastmod>2025-09-26</lastmod>
+    <loc>https://ventsetcourbes.org/blog/creer-theiere-tournee-etapes</loc>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ventsetcourbes.org/reservation/tournage-single</loc>
-    <lastmod>2025-09-26</lastmod>
+    <loc>https://ventsetcourbes.org/blog/emaillage-ceramique-premiers-pas</loc>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ventsetcourbes.org/reservation/impressions-ceramique</loc>
-    <lastmod>2025-09-26</lastmod>
+    <loc>https://ventsetcourbes.org/blog/reconvertir-ceramique-possible</loc>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ventsetcourbes.org/reservation/recherche-email</loc>
-    <lastmod>2025-09-26</lastmod>
+    <loc>https://ventsetcourbes.org/blog/debuter-ceramique-paris-guide</loc>
+    <lastmod>2026-01-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ventsetcourbes.org/blog/secrets-artisans-ceramistes-paris</loc>
+    <lastmod>2026-01-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ventsetcourbes.org/blog/etapes-lancer-ceramiste-paris</loc>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/reservation/stage-tournage-ceramique</loc>
-    <lastmod>2025-09-26</lastmod>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://ventsetcourbes.org/reservation/modelage-carafe</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/reservation/stage-tournage-3-jours</loc>
-    <lastmod>2025-09-26</lastmod>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/reservation/tournage-modelage-initiation</loc>
-    <lastmod>2025-09-26</lastmod>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ventsetcourbes.org/reservation/initiation-emaillage</loc>
+    <lastmod>2026-01-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ventsetcourbes.org/reservation/impressions-ceramique</loc>
+    <lastmod>2026-01-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ventsetcourbes.org/reservation/recherche-email</loc>
+    <lastmod>2026-01-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/reservation/volumes-engobes-maria-bosch</loc>
-    <lastmod>2025-09-26</lastmod>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/reservation/engobes-vitrifie-maria-bosch</loc>
-    <lastmod>2025-09-26</lastmod>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ventsetcourbes.org/reservation/modelage-carafe</loc>
+    <lastmod>2026-01-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/reservation/duo-bols-au-tour</loc>
-    <lastmod>2025-09-26</lastmod>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://ventsetcourbes.org/reservation/stage-tournage-ceramique-4-jours</loc>
-    <lastmod>2025-09-26</lastmod>
+    <loc>https://ventsetcourbes.org/reservation/cuisson-bois-henrichemont</loc>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://ventsetcourbes.org/reservation/stage-tournage-3-jours-weekend</loc>
-    <lastmod>2025-09-26</lastmod>
+    <loc>https://ventsetcourbes.org/reservation/tournage-annuel</loc>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
-
-  <!-- Note pour les articles de blog dynamiques :
-       Les URLs des articles de blog individuels (/blog/:slug) doivent être ajoutées ici.
-       Si vous avez un grand nombre d'articles, il est recommandé de générer ce sitemap
-       automatiquement lors de la construction de votre site ou via un script.
-       Pour l'instant, seul l'index du blog est inclus.
-  -->
+  <url>
+    <loc>https://ventsetcourbes.org/reservation/tournage-trimestriel</loc>
+    <lastmod>2026-01-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ventsetcourbes.org/reservation/tournage-single</loc>
+    <lastmod>2026-01-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ventsetcourbes.org/reservation/modelage-annuel</loc>
+    <lastmod>2026-01-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ventsetcourbes.org/reservation/modelage-trimestriel</loc>
+    <lastmod>2026-01-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ventsetcourbes.org/reservation/modelage-single</loc>
+    <lastmod>2026-01-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
