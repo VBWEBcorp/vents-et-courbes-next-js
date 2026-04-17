@@ -47,13 +47,19 @@ const Reservation = ({ params }: { params: { courseId: string } }) => {
 
   useEffect(() => {
     if (item) {
-      const timer = setTimeout(() => {
-        if (window.customElements && window.customElements.get('product-details-widget')) {
-          console.log('Widget Regiondo chargé');
-        }
-      }, 1000);
+      // Recharger le script Regiondo pour initialiser le widget
+      const existingScript = document.querySelector('script[src*="regiondo.net"]');
+      if (existingScript) {
+        existingScript.remove();
+      }
+      const script = document.createElement('script');
+      script.src = 'https://widgets.regiondo.net/product/v1/product-widget.min.js';
+      script.async = true;
+      document.body.appendChild(script);
 
-      return () => clearTimeout(timer);
+      return () => {
+        script.remove();
+      };
     }
   }, [item]);
 
