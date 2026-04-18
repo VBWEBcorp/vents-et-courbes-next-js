@@ -12,7 +12,7 @@ const AtelierPartageFormules: React.FC = () => {
           Nos Formules
         </h2>
         <p className="text-center text-gray-600 mb-16 max-w-2xl mx-auto">
-          Choisissez la formule qui correspond a votre rythme de creation
+          Choisissez la formule qui correspond à votre rythme de création
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -38,22 +38,22 @@ const AtelierPartageFormules: React.FC = () => {
                 <p className="text-sm text-gray-500 mb-1">Sans engagement</p>
                 <div className="flex items-baseline">
                   <span className="text-4xl font-bold text-gray-900">{formule.price}</span>
-                  <span className="text-gray-500 ml-1">EUR / mois</span>
+                  <span className="text-gray-500 ml-1">€ / mois</span>
                 </div>
               </div>
 
               <div className="border-t border-stone-200 pt-6 mb-6">
-                <p className="text-sm text-gray-500 mb-1">Engagement 10 a 12 mois</p>
+                <p className="text-sm text-gray-500 mb-1">Engagement 10 à 12 mois</p>
                 <div className="flex items-baseline mb-4">
                   <span className="text-4xl font-bold text-primary-400">{formule.price}</span>
-                  <span className="text-gray-500 ml-1">EUR / mois</span>
+                  <span className="text-gray-500 ml-1">€ / mois</span>
                 </div>
 
                 <div className="flex items-start bg-green-50 rounded-xl p-3">
                   <Gift className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" strokeWidth={1.5} />
                   <div>
                     <p className="text-gray-800 text-sm font-medium">{formule.engagementBonus}</p>
-                    <p className="text-gray-500 text-xs">(d'une valeur de {formule.bonusValue} EUR)</p>
+                    <p className="text-gray-500 text-xs">(d'une valeur de {formule.bonusValue} €)</p>
                   </div>
                 </div>
               </div>
@@ -66,7 +66,7 @@ const AtelierPartageFormules: React.FC = () => {
                     : 'bg-gray-800 hover:bg-gray-900 text-white'
                 }`}
               >
-                Reserver en ligne
+                Réserver en ligne
               </Link>
             </div>
           ))}
