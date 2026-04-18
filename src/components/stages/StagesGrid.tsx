@@ -2,6 +2,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { getAllStages, Stage } from '../../services/supabaseAdmin';
+import { isEligibleCPF, getCPFLink } from '../../lib/cpf';
+import CPFBanner from '../CPFBanner';
 
 interface StagesGridProps {
   activeFilter?: string;
@@ -169,6 +171,13 @@ const StagesGrid: React.FC<StagesGridProps> = ({ activeFilter = 'all', onFilterC
                     <div className="bg-white/95 backdrop-blur-sm border border-green-400/30 text-green-600 px-3 py-1.5 rounded-full text-xs font-medium shadow-sm">
                       ✨ Cuisson comprise
                     </div>
+                  </div>
+                )}
+
+                {/* Bannière CPF en bas à droite */}
+                {isEligibleCPF(stage.reservation_slug) && (
+                  <div className="absolute bottom-3 right-3">
+                    <CPFBanner href={getCPFLink(stage.reservation_slug)!} onCard />
                   </div>
                 )}
               </div>

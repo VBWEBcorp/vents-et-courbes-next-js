@@ -2,6 +2,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { getAllCours, Cours } from '../../services/supabaseAdmin';
+import { isEligibleCPF, getCPFLink } from '../../lib/cpf';
+import CPFBanner from '../CPFBanner';
 
 interface CoursGridProps {
   courses?: any[];
@@ -159,6 +161,13 @@ const CoursGrid: React.FC<CoursGridProps> = ({ activeFilter = 'all', onFilterCha
                     <div className="bg-white/95 backdrop-blur-sm border border-green-400/30 text-green-600 px-3 py-1.5 rounded-full text-xs font-medium shadow-sm">
                       ✨ Cuisson comprise
                     </div>
+                  </div>
+                )}
+
+                {/* Bannière CPF en bas à droite */}
+                {isEligibleCPF(course.reservation_slug) && (
+                  <div className="absolute bottom-3 right-3">
+                    <CPFBanner href={getCPFLink(course.reservation_slug)!} onCard />
                   </div>
                 )}
               </div>

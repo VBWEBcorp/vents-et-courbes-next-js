@@ -2,6 +2,8 @@
 import React from 'react';
 import { useState } from 'react';
 import DevisModal from '../DevisModal';
+import CPFBanner from '../CPFBanner';
+import { CPF_LINK_FORMATION_PRO } from '../../lib/cpf';
 
 const FormationProGrid = () => {
   const [isDevisModalOpen, setIsDevisModalOpen] = useState(false);
@@ -36,6 +38,10 @@ const FormationProGrid = () => {
                     </div>
                   </div>
                 </a>
+                {/* Bannière CPF */}
+                <div className="absolute bottom-3 right-3">
+                  <CPFBanner href={CPF_LINK_FORMATION_PRO} onCard />
+                </div>
               </div>
 
               {/* Content Section */}
@@ -50,7 +56,7 @@ const FormationProGrid = () => {
                 title="Accéder au programme sur DIGIFORMA"
               >
                 <h3 className="text-xl font-medium mb-2 group-hover:underline flex items-center">
-                  📋 Formation CAP Tournage en Céramique 
+                  📋 Formation CAP Tournage en Céramique
                   <span className="ml-2 text-sm opacity-75 group-hover:opacity-100">→ DIGIFORMA</span>
                 </h3>
               </a>
@@ -165,6 +171,10 @@ const FormationProGrid = () => {
                     </div>
                   </div>
                 </a>
+                {/* Bannière CPF */}
+                <div className="absolute bottom-3 right-3">
+                  <CPFBanner href={CPF_LINK_FORMATION_PRO} onCard />
+                </div>
               </div>
 
               {/* Content Section */}

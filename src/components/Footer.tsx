@@ -25,17 +25,30 @@ const Footer = () => {
         </div>
         
         {/* Logos côte à côte */}
-        <div className="flex items-center justify-center gap-6 mb-4">
-          <img 
-            src="https://i.ibb.co/ZzWhrH6J/logo-ventsetcourbes.png" 
+        <div className="flex items-center justify-center gap-6 mb-4 flex-wrap">
+          <img
+            src="https://i.ibb.co/ZzWhrH6J/logo-ventsetcourbes.png"
             alt="Vents et Courbes"
             className="h-16 w-auto"
           />
-          <img 
-            src="https://i.ibb.co/Q318G1sD/vignette-qualiopi-marque-de-certification-0-jpg.webp" 
+          <img
+            src="https://i.ibb.co/Q318G1sD/vignette-qualiopi-marque-de-certification-0-jpg.webp"
             alt="Certification Qualiopi"
-            className="h-16 w-auto"
+            className="h-24 w-auto"
           />
+          <a
+            href="https://www.moncompteformation.gouv.fr/"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Certaines formations sont éligibles au CPF - moncompteformation.gouv.fr"
+            className="inline-block hover:opacity-90 transition-opacity"
+          >
+            <img
+              src="https://i.ibb.co/GQfWb9vF/Mon-compte-formation-carr.png"
+              alt="Cette offre de formation est éligible à Mon Compte Formation"
+              className="h-24 w-auto"
+            />
+          </a>
         </div>
         
         <div className="space-y-2">

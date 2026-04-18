@@ -5,6 +5,8 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { ArrowLeft } from 'lucide-react';
 import { getStageBySlug, getCoursBySlug, Stage, Cours } from '../services/supabaseAdmin';
+import { isEligibleCPF, getCPFLink } from '../lib/cpf';
+import CPFBanner from '../components/CPFBanner';
 
 type ReservationItem = (Stage | Cours) & { itemType: 'stage' | 'cours' };
 
@@ -137,6 +139,11 @@ const Reservation = ({ params }: { params: { courseId: string } }) => {
                 </div>
               )}
             </div>
+            {isEligibleCPF(item.reservation_slug) && (
+              <div className="mb-6">
+                <CPFBanner href={getCPFLink(item.reservation_slug)!} />
+              </div>
+            )}
             <p className="text-gray-700 text-lg leading-relaxed mb-4">
               {item.description}
             </p>
