@@ -4,6 +4,7 @@ import ScrollToTop from '@/components/ScrollToTop';
 import LogoLoader from '@/components/LogoLoader';
 import Chatbot from '@/components/Chatbot';
 import CookiePopup from '@/components/CookiePopup';
+import AnnouncementPopup from '@/components/AnnouncementPopup';
 
 export const metadata: Metadata = {
   title: 'Céramique Le Pré-Saint-Gervais - Atelier Vents et Courbes Paris | Cours Tournage Modelage',
@@ -63,6 +64,7 @@ export default function RootLayout({
         <div className="min-h-screen">
           {children}
         </div>
+        <AnnouncementPopup />
         <Chatbot />
         <CookiePopup />
       </body>
