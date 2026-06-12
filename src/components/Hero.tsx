@@ -77,11 +77,12 @@ const Hero: React.FC<HeroProps> = ({
               backgroundImage: 'url("https://i.ibb.co/r2pTGFy7/Artisanat-Paumier-02-2017-EH-21-1-1-scaled-1.jpg")',
               willChange: 'transform',
               height: '120%',
-              top: '-10%'
+              top: '-10%',
+              filter: 'brightness(1.25)'
             }}
           ></div>
           {/* Overlay for better text readability */}
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-black/25"></div>
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto text-center">

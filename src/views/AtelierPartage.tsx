@@ -7,6 +7,7 @@ import StructuredData from '../components/StructuredData';
 import AtelierPartageHero from '../components/atelier-partage/AtelierPartageHero';
 import AtelierPartageFormules from '../components/atelier-partage/AtelierPartageFormules';
 import AtelierPartageDetails from '../components/atelier-partage/AtelierPartageDetails';
+import Gallery from '../components/Gallery';
 
 const AtelierPartage = () => {
   return (
@@ -16,6 +17,10 @@ const AtelierPartage = () => {
 
       <Header />
       <AtelierPartageHero />
+      <Gallery
+        title="Notre atelier partage en images"
+        description="Un espace de 100 m² entierement equipe au Pre-Saint-Gervais"
+      />
       <AtelierPartageFormules />
       <AtelierPartageDetails />
       <Footer />

@@ -35,7 +35,7 @@ const AtelierPartageHero: React.FC = () => {
           </div>
           <div className="flex items-center text-gray-600 fade-in-delay">
             <Clock className="w-4 h-4 mr-2 flex-shrink-0" strokeWidth={1.5} />
-            <span>Acces libre tous les jours de 07h00 a 23h00</span>
+            <span>Acces libre 7j/7 (voir les horaires detailles ci-dessous)</span>
           </div>
         </div>
 

@@ -102,6 +102,15 @@ const Reservation = ({ params }: { params: { courseId: string } }) => {
 
   const isStage = item.itemType === 'stage';
 
+  // Le champ widget_id peut contenir soit l'UUID seul, soit tout le code
+  // d'intégration Regiondo collé (<product-details-widget widget-id="...">...).
+  // On en extrait l'UUID pour éviter un widget cassé.
+  const rawWidget = item.widget_id || '';
+  const uuidMatch =
+    rawWidget.match(/widget-id=["']?([0-9a-fA-F-]{36})["']?/) ||
+    rawWidget.match(/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/);
+  const widgetId = uuidMatch ? (uuidMatch[1] || uuidMatch[0]) : rawWidget;
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -147,9 +156,34 @@ const Reservation = ({ params }: { params: { courseId: string } }) => {
             <p className="text-gray-700 text-lg leading-relaxed mb-4">
               {item.description}
             </p>
-            <p className="text-gray-600 italic">
+            <p className="text-gray-600 italic mb-6">
               {item.includes}
             </p>
+
+            {/* Prix */}
+            <div className="border-t border-gray-200 pt-6">
+              <div className="flex items-baseline gap-2 mb-2">
+                <span className="text-primary-400 text-xl font-medium">Prix</span>
+                <span className="text-primary-400 text-3xl font-bold ml-auto">
+                  {item.price}
+                </span>
+                {item.additional_price && (
+                  <span className="text-primary-400 text-lg">{item.additional_price}</span>
+                )}
+              </div>
+              {item.additional_text && (
+                <div className="text-gray-600 text-sm leading-relaxed">
+                  {item.additional_text.split('\n').map((line, i) => (
+                    <div key={i}>{line}</div>
+                  ))}
+                </div>
+              )}
+              {item.opco && (
+                <p className="text-gray-600 text-sm mt-2 leading-relaxed">
+                  {item.opco}
+                </p>
+              )}
+            </div>
           </div>
         </div>
       </section>
@@ -167,7 +201,7 @@ const Reservation = ({ params }: { params: { courseId: string } }) => {
 
           <div className="bg-white border border-gray-200 rounded-2xl p-4 md:p-6 shadow-lg">
             <div id="regiondo-widget-container" className="min-h-[700px] w-full">
-              <product-details-widget widget-id={item.widget_id}></product-details-widget>
+              <product-details-widget widget-id={widgetId}></product-details-widget>
             </div>
           </div>
 

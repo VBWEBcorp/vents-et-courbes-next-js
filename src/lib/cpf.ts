@@ -11,15 +11,17 @@ export const CPF_LINKS: Record<string, string> = {
   // Stage de recherche et compréhension d'émail
   'recherche-email': 'https://www.moncompteformation.gouv.fr/espace-prive/html/#/formation/recherche/80326607100023_EMAILSTAGE28/80326607100023_EMAILSTAGE28?contexteFormation=ACTIVITE_PROFESSIONNELLE',
 
+  // Ateliers Maria Bosch (engobes vitrifiés)
+  'volumes-engobes-maria-bosch': 'https://www.moncompteformation.gouv.fr/espace-prive/html/#/formation/recherche/80326607100023_EMAILSTAGE28/80326607100023_EMAILSTAGE28?contexteFormation=ACTIVITE_PROFESSIONNELLE',
+  'engobes-vitrifie-maria-bosch': 'https://www.moncompteformation.gouv.fr/espace-prive/html/#/formation/recherche/80326607100023_EMAILSTAGE28/80326607100023_EMAILSTAGE28?contexteFormation=ACTIVITE_PROFESSIONNELLE',
+
   // Cours de tournage (12 à 32 séances)
   'tournage-annuel': 'https://www.moncompteformation.gouv.fr/espace-prive/html/#/formation/recherche/80326607100023_36HEURESTOUR/80326607100023_36HEURESTOUR?contexteFormation=ACTIVITE_PROFESSIONNELLE',
   'tournage-trimestriel': 'https://www.moncompteformation.gouv.fr/espace-prive/html/#/formation/recherche/80326607100023_36HEURESTOUR/80326607100023_36HEURESTOUR?contexteFormation=ACTIVITE_PROFESSIONNELLE',
-  'tournage-single': 'https://www.moncompteformation.gouv.fr/espace-prive/html/#/formation/recherche/80326607100023_36HEURESTOUR/80326607100023_36HEURESTOUR?contexteFormation=ACTIVITE_PROFESSIONNELLE',
 
   // Cours de modelage (12 à 32 séances)
   'modelage-annuel': 'https://www.moncompteformation.gouv.fr/espace-prive/html/#/formation/recherche/80326607100023_36HEURESMODELAGE/80326607100023_36HEURESMODELAGE?contexteFormation=ACTIVITE_PROFESSIONNELLE',
   'modelage-trimestriel': 'https://www.moncompteformation.gouv.fr/espace-prive/html/#/formation/recherche/80326607100023_36HEURESMODELAGE/80326607100023_36HEURESMODELAGE?contexteFormation=ACTIVITE_PROFESSIONNELLE',
-  'modelage-single': 'https://www.moncompteformation.gouv.fr/espace-prive/html/#/formation/recherche/80326607100023_36HEURESMODELAGE/80326607100023_36HEURESMODELAGE?contexteFormation=ACTIVITE_PROFESSIONNELLE',
 };
 
 // Lien CPF pour les formations professionnelles (CAP Tournage et Créateur)
