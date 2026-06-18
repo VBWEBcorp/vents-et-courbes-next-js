@@ -52,17 +52,29 @@ const Hero: React.FC<HeroProps> = ({
   const cta2Link = content.hero_cta2?.button_link || propCta2Link || "/formation-pro";
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (parallaxRef.current) {
+    let rafId: number | null = null;
+
+    const update = () => {
+      rafId = null;
+      const parallax = parallaxRef.current;
+      if (parallax) {
         const scrolled = window.pageYOffset;
-        const parallax = parallaxRef.current;
-        const speed = 0.5;
-        parallax.style.transform = `translate3d(0, ${scrolled * speed}px, 0)`;
+        parallax.style.transform = `translate3d(0, ${scrolled * 0.5}px, 0)`;
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const handleScroll = () => {
+      // Coalesce scroll events: au plus une mise a jour du transform par frame
+      if (rafId === null) {
+        rafId = window.requestAnimationFrame(update);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafId !== null) window.cancelAnimationFrame(rafId);
+    };
   }, []);
 
   return (

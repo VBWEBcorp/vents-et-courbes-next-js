@@ -3,12 +3,16 @@ import React, { useState, useEffect } from 'react';
 import { X, Sparkles } from 'lucide-react';
 import { useIsAdminPage } from '../hooks/useIsAdminPage';
 
-const STORAGE_KEY = 'rentree-2026-2027-seen';
+const STORAGE_KEY = 'flyer-prix-2026-2027-seen';
+const FLYER_PDF = '/affiche-saison-2026-2027.pdf';
 
 const AnnouncementPopup = () => {
   const isAdminPage = useIsAdminPage();
   const [isVisible, setIsVisible] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  // Le viewer PDF est lourd : on ne le monte qu'apres l'animation d'ouverture
+  // (~0.6s) pour que le popup s'ouvre sans a-coup.
+  const [flyerReady, setFlyerReady] = useState(false);
 
   useEffect(() => {
     if (isAdminPage) return;
@@ -20,6 +24,12 @@ const AnnouncementPopup = () => {
 
     return () => clearTimeout(timer);
   }, [isAdminPage]);
+
+  useEffect(() => {
+    if (!isVisible) return;
+    const timer = setTimeout(() => setFlyerReady(true), 650);
+    return () => clearTimeout(timer);
+  }, [isVisible]);
 
   const handleClose = () => {
     setIsClosing(true);
@@ -66,6 +76,34 @@ const AnnouncementPopup = () => {
         </div>
 
         <div className="px-6 md:px-10 py-6 md:py-8 overflow-y-auto" style={{ maxHeight: 'calc(90vh - 200px)' }}>
+          {/* Flyer de prix saison 2026-2027 */}
+          <a
+            href={FLYER_PDF}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block mb-6 rounded-xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-md transition-shadow"
+            aria-label="Ouvrir le programme et les tarifs 2026-2027 (PDF)"
+          >
+            {flyerReady ? (
+              <object
+                data={`${FLYER_PDF}#view=FitH&toolbar=0&navpanes=0`}
+                type="application/pdf"
+                className="w-full h-[420px] pointer-events-none bg-stone-50"
+              >
+                <div className="p-8 text-center text-gray-600">
+                  Cliquez pour ouvrir le programme et les tarifs 2026-2027 (PDF)
+                </div>
+              </object>
+            ) : (
+              <div className="w-full h-[420px] bg-stone-50 flex items-center justify-center">
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-400" />
+              </div>
+            )}
+            <div className="bg-primary-400 text-white text-center py-2.5 text-sm font-medium">
+              Cliquez pour agrandir le programme &amp; les tarifs 2026-2027
+            </div>
+          </a>
+
           <p className="text-gray-700 leading-relaxed mb-4">
             Bonjour à toutes et à tous !
           </p>
