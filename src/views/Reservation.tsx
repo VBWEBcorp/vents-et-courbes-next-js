@@ -84,6 +84,14 @@ const Reservation = ({ params }: { params: { courseId: string } }) => {
 
   const isStage = item.itemType === 'stage';
   const monclubUrl = item.monclub_url || 'https://ventsetcourbes.monclub.app';
+  // MonClub deep-linke une formule precise via ?selectedMembership=<formuleId>&step=1.
+  // On ne l'ajoute que sur une URL d'activite (/app/<id>) et si la formule est connue,
+  // sinon on retombe sur le lien d'activite (choix de la formule cote MonClub).
+  const bookingUrl = (formuleId?: string) => {
+    if (!formuleId || !monclubUrl.includes('/app/')) return monclubUrl;
+    const sep = monclubUrl.includes('?') ? '&' : '?';
+    return `${monclubUrl}${sep}selectedMembership=${formuleId}&step=1`;
+  };
   const sessions = item.sessions || [];
   const clean = (s: string) => (s || '').replace(/\s+/g, ' ').trim();
 
@@ -209,7 +217,7 @@ const Reservation = ({ params }: { params: { courseId: string } }) => {
                       {s.price}€
                     </div>
                     <a
-                      href={monclubUrl}
+                      href={bookingUrl(s.monclub_id)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-block bg-primary-400 hover:bg-primary-500 text-white px-6 py-2.5 rounded-full font-medium transition-colors"
@@ -225,7 +233,7 @@ const Reservation = ({ params }: { params: { courseId: string } }) => {
           {sessions.length === 0 && (
             <div className="text-center mb-4">
               <a
-                href={monclubUrl}
+                href={bookingUrl(item.monclub_ids?.[0])}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center bg-primary-400 hover:bg-primary-500 text-white px-8 py-3.5 rounded-full font-medium text-lg transition-colors shadow-lg"
