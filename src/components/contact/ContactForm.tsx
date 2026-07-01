@@ -48,7 +48,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ content }) => {
     setStatusMessage('');
 
     try {
-      const response = await fetch('https://formspree.io/f/mvgbjbgd', {
+      const response = await fetch('/.netlify/functions/contact', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',

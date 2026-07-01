@@ -31,3 +31,11 @@ out
 .env.development.local
 .env.test.local
 .env.production.local
+# Local Netlify folder
+.netlify
+
+# Deno lockfile (non utilisé pour le build)
+deno.lock
+
+# Exports CSV ponctuels (formules, etc.)
+formules_*.csv

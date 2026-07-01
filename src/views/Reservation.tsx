@@ -47,24 +47,6 @@ const Reservation = ({ params }: { params: { courseId: string } }) => {
     loadReservationData();
   }, [courseId]);
 
-  useEffect(() => {
-    if (item) {
-      // Recharger le script Regiondo pour initialiser le widget
-      const existingScript = document.querySelector('script[src*="regiondo.net"]');
-      if (existingScript) {
-        existingScript.remove();
-      }
-      const script = document.createElement('script');
-      script.src = 'https://widgets.regiondo.net/product/v1/product-widget.min.js';
-      script.async = true;
-      document.body.appendChild(script);
-
-      return () => {
-        script.remove();
-      };
-    }
-  }, [item]);
-
   if (loading) {
     return (
       <div className="min-h-screen">
@@ -101,15 +83,9 @@ const Reservation = ({ params }: { params: { courseId: string } }) => {
   }
 
   const isStage = item.itemType === 'stage';
-
-  // Le champ widget_id peut contenir soit l'UUID seul, soit tout le code
-  // d'intégration Regiondo collé (<product-details-widget widget-id="...">...).
-  // On en extrait l'UUID pour éviter un widget cassé.
-  const rawWidget = item.widget_id || '';
-  const uuidMatch =
-    rawWidget.match(/widget-id=["']?([0-9a-fA-F-]{36})["']?/) ||
-    rawWidget.match(/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/);
-  const widgetId = uuidMatch ? (uuidMatch[1] || uuidMatch[0]) : rawWidget;
+  const monclubUrl = item.monclub_url || 'https://ventsetcourbes.monclub.app';
+  const sessions = item.sessions || [];
+  const clean = (s: string) => (s || '').replace(/\s+/g, ' ').trim();
 
   return (
     <div className="min-h-screen">
@@ -126,6 +102,17 @@ const Reservation = ({ params }: { params: { courseId: string } }) => {
               {isStage ? "Retour aux stages" : "Retour aux cours"}
             </Link>
           </div>
+
+          {item.image_url && (
+            <div className="mb-8 rounded-3xl overflow-hidden shadow-lg">
+              <img
+                src={item.image_url}
+                alt={item.title}
+                className="w-full h-64 md:h-96 object-cover"
+                loading="lazy"
+              />
+            </div>
+          )}
 
           <div className="mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-primary-400 mb-4 leading-tight">
@@ -199,11 +186,58 @@ const Reservation = ({ params }: { params: { courseId: string } }) => {
             </p>
           </div>
 
-          <div className="bg-white border border-gray-200 rounded-2xl p-4 md:p-6 shadow-lg">
-            <div id="regiondo-widget-container" className="min-h-[700px] w-full">
-              <product-details-widget widget-id={widgetId}></product-details-widget>
+          {sessions.length > 0 && (
+            <div className="space-y-4 mb-8">
+              {sessions.map((s) => (
+                <div
+                  key={s.monclub_id}
+                  className="bg-white border border-gray-200 rounded-2xl p-5 md:p-6 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+                >
+                  <div className="flex-1">
+                    <h3 className="font-medium text-gray-900 mb-1">{clean(s.label)}</h3>
+                    <ul className="text-sm text-gray-600 space-y-0.5">
+                      {s.creneaux.map((c, i) => (
+                        <li key={i}>{clean(c.label)}</li>
+                      ))}
+                    </ul>
+                    {s.lieu && (
+                      <p className="text-xs text-gray-500 mt-2">📍 {s.lieu}</p>
+                    )}
+                  </div>
+                  <div className="text-right shrink-0">
+                    <div className="text-primary-400 font-bold text-2xl mb-2">
+                      {s.price}€
+                    </div>
+                    <a
+                      href={monclubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block bg-primary-400 hover:bg-primary-500 text-white px-6 py-2.5 rounded-full font-medium transition-colors"
+                    >
+                      Réserver
+                    </a>
+                  </div>
+                </div>
+              ))}
             </div>
-          </div>
+          )}
+
+          {sessions.length === 0 && (
+            <div className="text-center mb-4">
+              <a
+                href={monclubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center bg-primary-400 hover:bg-primary-500 text-white px-8 py-3.5 rounded-full font-medium text-lg transition-colors shadow-lg"
+              >
+                Réserver sur MonClub
+              </a>
+            </div>
+          )}
+
+          <p className="text-center text-gray-500 text-sm mb-4">
+            Inscription et paiement sécurisés sur notre espace MonClub
+          </p>
 
           <div className="mt-8 text-center text-gray-600">
             <p className="mb-2">

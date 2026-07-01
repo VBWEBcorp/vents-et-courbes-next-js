@@ -1,14 +1,9 @@
 import Reservation from '@/views/Reservation';
-import { getAllStages, getAllCours } from '@/services/supabaseAdmin';
+import { getActiveReservationSlugs } from '../../../lib/server/data';
 
 export async function generateStaticParams() {
-  const [stagesRes, coursRes] = await Promise.all([
-    getAllStages(false),
-    getAllCours(false),
-  ]);
-  const stages = (stagesRes.data || []).map((s) => ({ courseId: s.reservation_slug }));
-  const cours = (coursRes.data || []).map((c) => ({ courseId: c.reservation_slug }));
-  return [...stages, ...cours];
+  const slugs = await getActiveReservationSlugs();
+  return slugs.map((courseId) => ({ courseId }));
 }
 
 export default async function ReservationPage({ params }: { params: Promise<{ courseId: string }> }) {

@@ -2,49 +2,67 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ventsetcourbes.org/</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/cours</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/stages</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/formation-pro</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/atelier-partage</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://ventsetcourbes.org/atelier-partage/residence-illimitee</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ventsetcourbes.org/atelier-partage/residence-32-heures</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ventsetcourbes.org/atelier-partage/residence-16-heures</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://ventsetcourbes.org/a-propos</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/contact</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/blog</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -116,61 +134,61 @@
   </url>
   <url>
     <loc>https://ventsetcourbes.org/reservation/stage-tournage-ceramique</loc>
-    <lastmod>2026-01-12</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/reservation/stage-tournage-3-jours</loc>
-    <lastmod>2026-01-12</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/reservation/tournage-modelage-initiation</loc>
-    <lastmod>2026-01-12</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/reservation/initiation-emaillage</loc>
-    <lastmod>2026-01-12</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/reservation/impressions-ceramique</loc>
-    <lastmod>2026-01-12</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/reservation/recherche-email</loc>
-    <lastmod>2026-01-12</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/reservation/volumes-engobes-maria-bosch</loc>
-    <lastmod>2026-01-12</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/reservation/engobes-vitrifie-maria-bosch</loc>
-    <lastmod>2026-01-12</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/reservation/modelage-carafe</loc>
-    <lastmod>2026-01-12</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/reservation/duo-bols-au-tour</loc>
-    <lastmod>2026-01-12</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -181,38 +199,50 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ventsetcourbes.org/reservation/2-jours-modelage</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ventsetcourbes.org/reservation/3-jours-modelage</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ventsetcourbes.org/reservation/tournage-annuel</loc>
-    <lastmod>2026-01-12</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/reservation/tournage-trimestriel</loc>
-    <lastmod>2026-01-12</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/reservation/tournage-single</loc>
-    <lastmod>2026-01-12</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/reservation/modelage-annuel</loc>
-    <lastmod>2026-01-12</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/reservation/modelage-trimestriel</loc>
-    <lastmod>2026-01-12</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://ventsetcourbes.org/reservation/modelage-single</loc>
-    <lastmod>2026-01-12</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

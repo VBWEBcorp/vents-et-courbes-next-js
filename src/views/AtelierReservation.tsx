@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -10,22 +10,10 @@ interface AtelierReservationProps {
   formule: AtelierFormule;
 }
 
+// Lien d'inscription MonClub de l'activité « Atelier partagé »
+const MONCLUB_URL = 'https://ventsetcourbes.monclub.app/app/6a0ddc5aa91686a293060e8b';
+
 const AtelierReservation: React.FC<AtelierReservationProps> = ({ formule }) => {
-  useEffect(() => {
-    const existingScript = document.querySelector('script[src*="regiondo.net"]');
-    if (existingScript) {
-      existingScript.remove();
-    }
-    const script = document.createElement('script');
-    script.src = 'https://widgets.regiondo.net/product/v1/product-widget.min.js';
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      script.remove();
-    };
-  }, []);
-
   return (
     <div className="min-h-screen">
       <Header />
@@ -95,10 +83,18 @@ const AtelierReservation: React.FC<AtelierReservationProps> = ({ formule }) => {
             </p>
           </div>
 
-          <div className="bg-white border border-gray-200 rounded-2xl p-4 md:p-6 shadow-lg">
-            <div id="regiondo-widget-container" className="min-h-[700px] w-full">
-              <product-details-widget widget-id={formule.widgetId}></product-details-widget>
-            </div>
+          <div className="text-center mb-4">
+            <a
+              href={MONCLUB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center bg-primary-400 hover:bg-primary-500 text-white px-8 py-3.5 rounded-full font-medium text-lg transition-colors shadow-lg"
+            >
+              Réserver sur MonClub
+            </a>
+            <p className="text-gray-500 text-sm mt-3">
+              Inscription et paiement sécurisés sur notre espace MonClub
+            </p>
           </div>
 
           <div className="mt-8 text-center text-gray-600">

@@ -52,7 +52,7 @@ const DevisModal: React.FC<DevisModalProps> = ({ isOpen, onClose, formationType 
     try {
       console.log('Envoi de la demande de devis vers Formspree...');
       
-      const response = await fetch('https://formspree.io/f/mvgbjbgd', {
+      const response = await fetch('/.netlify/functions/contact', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',

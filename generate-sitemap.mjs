@@ -1,10 +1,7 @@
-import { createClient } from '@supabase/supabase-js';
+import { MongoClient } from 'mongodb';
 import { writeFileSync } from 'fs';
 import 'dotenv/config';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
 const baseUrl = 'https://ventsetcourbes.org';
 const today = new Date().toISOString().split('T')[0];
 
@@ -24,24 +21,27 @@ async function generate() {
     { loc: '/blog', priority: '0.8', freq: 'weekly' },
   ];
 
-  // Articles de blog
-  const { data: articles } = await supabase
-    .from('blog_posts')
-    .select('slug, updated_at, published_date')
-    .eq('active', true)
-    .order('published_date', { ascending: false });
+  const client = new MongoClient(process.env.MONGODB_URI);
+  await client.connect();
+  const db = client.db();
 
-  // Stages
-  const { data: stages } = await supabase
-    .from('stages')
-    .select('reservation_slug, updated_at')
-    .eq('active', true);
+  const articles = await db
+    .collection('blog_posts')
+    .find({ active: true }, { projection: { slug: 1, updated_at: 1, published_date: 1 } })
+    .sort({ published_date: -1 })
+    .toArray();
 
-  // Cours
-  const { data: cours } = await supabase
-    .from('cours')
-    .select('reservation_slug, updated_at')
-    .eq('active', true);
+  const stages = await db
+    .collection('stages')
+    .find({ active: true }, { projection: { reservation_slug: 1, updated_at: 1 } })
+    .toArray();
+
+  const cours = await db
+    .collection('cours')
+    .find({ active: true }, { projection: { reservation_slug: 1, updated_at: 1 } })
+    .toArray();
+
+  await client.close();
 
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

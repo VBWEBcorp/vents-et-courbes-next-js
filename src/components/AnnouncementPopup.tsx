@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { X, Sparkles } from 'lucide-react';
 import { useIsAdminPage } from '../hooks/useIsAdminPage';
 
-const STORAGE_KEY = 'flyer-prix-2026-2027-seen';
+const STORAGE_KEY = 'flyer-prix-2026-2027-v2-seen';
 const FLYER_PDF = '/affiche-saison-2026-2027.pdf';
 
 const AnnouncementPopup = () => {

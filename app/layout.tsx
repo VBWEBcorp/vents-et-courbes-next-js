@@ -56,7 +56,6 @@ export default function RootLayout({
         <meta name="theme-color" content="#C4553C" />
         <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" as="style" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" />
-        <script type="text/javascript" src="https://widgets.regiondo.net/product/v1/product-widget.min.js" async defer />
       </head>
       <body>
         <LogoLoader />

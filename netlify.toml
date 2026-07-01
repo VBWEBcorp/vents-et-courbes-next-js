@@ -5,6 +5,26 @@ publish = "out"
 [build.environment]
 NODE_VERSION = "20"
 
+# Aperçu local : on sert le build statique (out/) + les functions, comme en prod.
+# (netlify dev + Next `output: export` en mode live n'est pas compatible : il
+#  cherche des .html qui n'existent qu'après `npm run build`.)
+[dev]
+framework = "#static"
+publish = "out"
+port = 8888
+autoLaunch = false
+
+[functions]
+directory = "netlify/functions"
+node_bundler = "esbuild"
+
+# Alias plus propre : /api/xxx -> /.netlify/functions/xxx
+[[redirects]]
+from = "/api/*"
+to = "/.netlify/functions/:splat"
+status = 200
+force = true
+
 [[redirects]]
 from = "/*"
 to = "/404.html"

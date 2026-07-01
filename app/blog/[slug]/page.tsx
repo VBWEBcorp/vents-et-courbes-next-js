@@ -1,11 +1,9 @@
 import BlogPostDetail from '@/views/BlogPostDetail';
-import { getAllArticles } from '@/services/supabaseAdmin';
+import { getActiveBlogSlugs } from '../../../lib/server/data';
 
 export async function generateStaticParams() {
-  const { data } = await getAllArticles(false);
-  return (data || []).map((article) => ({
-    slug: article.slug,
-  }));
+  const slugs = await getActiveBlogSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
