@@ -84,13 +84,15 @@ const Reservation = ({ params }: { params: { courseId: string } }) => {
 
   const isStage = item.itemType === 'stage';
   const monclubUrl = item.monclub_url || 'https://ventsetcourbes.monclub.app';
-  // MonClub deep-linke une formule precise via ?selectedMembership=<formuleId>&step=1.
+  // MonClub deep-linke une formule precise via ?selectedMembership=<formuleId>&step=3.
+  // step=3 amene directement a l'etape de reservation (choix des creneaux) plutot
+  // qu'a l'etape 1 (presentation de la formule).
   // On ne l'ajoute que sur une URL d'activite (/app/<id>) et si la formule est connue,
   // sinon on retombe sur le lien d'activite (choix de la formule cote MonClub).
   const bookingUrl = (formuleId?: string) => {
     if (!formuleId || !monclubUrl.includes('/app/')) return monclubUrl;
     const sep = monclubUrl.includes('?') ? '&' : '?';
-    return `${monclubUrl}${sep}selectedMembership=${formuleId}&step=1`;
+    return `${monclubUrl}${sep}selectedMembership=${formuleId}&step=3`;
   };
   const sessions = item.sessions || [];
   const clean = (s: string) => (s || '').replace(/\s+/g, ' ').trim();
