@@ -5,51 +5,28 @@ import { Camera, ArrowRight } from 'lucide-react';
 interface GalleryProps {
   title?: string;
   description?: string;
+  images?: string[];
 }
 
-const Gallery: React.FC<GalleryProps> = ({ title, description }) => {
-  const images = [
-    {
-      id: 1,
-      src: "https://i.ibb.co/7w4BNrH/VC-image-galerie01.jpg",
-      alt: "Atelier céramique - Vue d'ensemble"
-    },
-    {
-      id: 2,
-      src: "https://i.ibb.co/YBH2d6WY/VC-image-galerie02.jpg", 
-      alt: "Cours de tournage"
-    },
-    {
-      id: 3,
-      src: "https://i.ibb.co/B2D11tpV/VC-image-galerie03.jpg",
-      alt: "Créations céramiques"
-    },
-    {
-      id: 4,
-      src: "https://i.ibb.co/MyFKFS6q/VC-image-galerie04.jpg",
-      alt: "Modelage et façonnage"
-    },
-    {
-      id: 5,
-      src: "https://i.ibb.co/5hfqjpVq/VC-image-galerie05.jpg",
-      alt: "Espace de travail"
-    },
-    {
-      id: 6,
-      src: "https://i.ibb.co/hJ6TxyrW/VC-image-galerie06.jpg",
-      alt: "Pièces en cours"
-    },
-    {
-      id: 7,
-      src: "https://i.ibb.co/S70yQr6N/VC-image-galerie07.jpg",
-      alt: "Détails techniques"
-    },
-    {
-      id: 8,
-      src: "https://i.ibb.co/r2pTGFy7/Artisanat-Paumier-02-2017-EH-21-1-1-scaled-1.jpg",
-      alt: "Œuvre de Philippe Paumier"
-    }
-  ];
+const DEFAULT_GALLERY = [
+  "https://i.ibb.co/7w4BNrH/VC-image-galerie01.jpg",
+  "https://i.ibb.co/YBH2d6WY/VC-image-galerie02.jpg",
+  "https://i.ibb.co/B2D11tpV/VC-image-galerie03.jpg",
+  "https://i.ibb.co/MyFKFS6q/VC-image-galerie04.jpg",
+  "https://i.ibb.co/5hfqjpVq/VC-image-galerie05.jpg",
+  "https://i.ibb.co/hJ6TxyrW/VC-image-galerie06.jpg",
+  "https://i.ibb.co/S70yQr6N/VC-image-galerie07.jpg",
+  "https://i.ibb.co/r2pTGFy7/Artisanat-Paumier-02-2017-EH-21-1-1-scaled-1.jpg",
+];
+
+const Gallery: React.FC<GalleryProps> = ({ title, description, images: imagesProp }) => {
+  const sources =
+    imagesProp && imagesProp.length > 0 ? imagesProp : DEFAULT_GALLERY;
+  const images = sources.map((src, i) => ({
+    id: i + 1,
+    src,
+    alt: `Atelier Vents et Courbes - photo ${i + 1}`,
+  }));
 
   return (
     <section className="bg-white py-12 md:py-16 px-4 md:px-6 overflow-hidden">

@@ -109,16 +109,29 @@ export interface ArticleBlog {
   updated_at?: string;
 }
 
+export type PageFieldType =
+  | 'title'
+  | 'subtitle'
+  | 'paragraph'
+  | 'button'
+  | 'feature'
+  | 'image'
+  | 'gallery';
+
 export interface PageContent {
   id?: string;
   page_key: string;
   page_name: string;
   section: string;
+  group?: string;
+  field_type?: PageFieldType;
   title?: string;
   subtitle?: string;
   content?: string;
   button_text?: string;
   button_link?: string;
+  image_url?: string;
+  images?: string[];
   order_index: number;
   active: boolean;
   created_at?: string;

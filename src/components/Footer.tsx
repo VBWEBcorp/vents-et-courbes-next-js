@@ -2,9 +2,19 @@
 import React from 'react';
 import NAP from './NAP';
 import { useSiteSettings } from '../lib/siteSettings';
+import { useGlobalContent } from '../hooks/useGlobalContent';
+import { img } from '../services/pagesContent';
+
+const DEFAULT_LOGO = 'https://i.ibb.co/ZzWhrH6J/logo-ventsetcourbes.png';
+const DEFAULT_QUALIOPI = 'https://i.ibb.co/Q318G1sD/vignette-qualiopi-marque-de-certification-0-jpg.webp';
+const DEFAULT_CPF = 'https://i.ibb.co/GQfWb9vF/Mon-compte-formation-carr.png';
 
 const Footer = () => {
   const settings = useSiteSettings();
+  const global = useGlobalContent();
+  const logo = img(global.logo, DEFAULT_LOGO);
+  const qualiopi = img(global.qualiopi_logo, DEFAULT_QUALIOPI);
+  const cpf = img(global.cpf_logo, DEFAULT_CPF);
   return (
     <footer className="bg-white border-t border-gray-200 py-8 px-6">
       <div className="max-w-7xl mx-auto text-center">
@@ -31,12 +41,12 @@ const Footer = () => {
         {/* Logos côte à côte */}
         <div className="flex items-center justify-center gap-6 mb-4 flex-wrap">
           <img
-            src="https://i.ibb.co/ZzWhrH6J/logo-ventsetcourbes.png"
+            src={logo}
             alt="Vents et Courbes"
             className="h-16 w-auto"
           />
           <img
-            src="https://i.ibb.co/Q318G1sD/vignette-qualiopi-marque-de-certification-0-jpg.webp"
+            src={qualiopi}
             alt="Certification Qualiopi"
             className="h-24 w-auto"
           />
@@ -48,7 +58,7 @@ const Footer = () => {
             className="inline-block hover:opacity-90 transition-opacity"
           >
             <img
-              src="https://i.ibb.co/GQfWb9vF/Mon-compte-formation-carr.png"
+              src={cpf}
               alt="Cette offre de formation est éligible à Mon Compte Formation"
               className="h-24 w-auto"
             />

@@ -3,7 +3,11 @@ import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import CoursStagesModal from './CoursStagesModal';
-import { getPageContentBySection } from '../services/pagesContent';
+import { getPageContentBySection, img } from '../services/pagesContent';
+import { useGlobalContent } from '../hooks/useGlobalContent';
+
+const DEFAULT_HERO_BG = 'https://i.ibb.co/r2pTGFy7/Artisanat-Paumier-02-2017-EH-21-1-1-scaled-1.jpg';
+const DEFAULT_LOGO = 'https://i.ibb.co/ZzWhrH6J/logo-ventsetcourbes.png';
 
 interface HeroProps {
   mainTitle?: string;
@@ -32,6 +36,8 @@ const Hero: React.FC<HeroProps> = ({
   const parallaxRef = useRef<HTMLDivElement>(null);
   const [content, setContent] = useState<any>({});
   const [loading, setLoading] = useState(true);
+  const global = useGlobalContent();
+  const logo = img(global.logo, DEFAULT_LOGO);
 
   useEffect(() => {
     const loadContent = async () => {
@@ -50,6 +56,7 @@ const Hero: React.FC<HeroProps> = ({
   const cta1Link = content.hero_cta1?.button_link || propCta1Link;
   const cta2Text = content.hero_cta2?.button_text || propCta2Text || "Formation professionnelle";
   const cta2Link = content.hero_cta2?.button_link || propCta2Link || "/formation-pro";
+  const heroBg = content.hero_image?.image_url || DEFAULT_HERO_BG;
 
   useEffect(() => {
     let rafId: number | null = null;
@@ -86,7 +93,7 @@ const Hero: React.FC<HeroProps> = ({
             ref={parallaxRef}
             className="absolute inset-0 bg-cover bg-center bg-no-repeat transform scale-110"
             style={{
-              backgroundImage: 'url("https://i.ibb.co/r2pTGFy7/Artisanat-Paumier-02-2017-EH-21-1-1-scaled-1.jpg")',
+              backgroundImage: `url("${heroBg}")`,
               willChange: 'transform',
               height: '120%',
               top: '-10%',
@@ -101,7 +108,7 @@ const Hero: React.FC<HeroProps> = ({
         {/* Logo mobile uniquement */}
         <div className="block md:hidden mb-8 fade-in">
           <img
-            src="https://i.ibb.co/ZzWhrH6J/logo-ventsetcourbes.png"
+            src={logo}
             alt="Vents et Courbes"
             className="h-16 w-auto mx-auto pulse-soft"
           />

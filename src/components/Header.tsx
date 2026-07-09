@@ -3,10 +3,16 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import EspaceAdherentModal from './EspaceAdherentModal';
+import { useGlobalContent } from '../hooks/useGlobalContent';
+import { img } from '../services/pagesContent';
+
+const DEFAULT_LOGO = 'https://i.ibb.co/ZzWhrH6J/logo-ventsetcourbes.png';
 
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const global = useGlobalContent();
+  const logo = img(global.logo, DEFAULT_LOGO);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -24,8 +30,8 @@ const Header = () => {
             {/* Logo */}
             <div className="flex items-center">
               <Link href="/" onClick={closeMobileMenu} className="smooth-hover">
-                <img 
-                  src="https://i.ibb.co/ZzWhrH6J/logo-ventsetcourbes.png" 
+                <img
+                  src={logo}
                   alt="Vents et Courbes"
                   className="h-10 md:h-12 w-auto pulse-soft"
                 />

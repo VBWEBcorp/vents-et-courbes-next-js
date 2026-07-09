@@ -57,6 +57,7 @@ const Home = () => {
       <Gallery
         title={content.gallery_title?.title}
         description={content.gallery_description?.content}
+        images={content.gallery_images?.images ?? undefined}
       />
       <Blog
         title={content.blog_title?.title}

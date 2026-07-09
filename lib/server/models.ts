@@ -115,16 +115,31 @@ export interface ArticleBlog {
   updated_at?: string;
 }
 
+// Type de bloc éditable dans l'éditeur de pages. Détermine le contrôle
+// affiché ET le champ qui porte la valeur.
+export type PageFieldType =
+  | 'title' // -> title
+  | 'subtitle' // -> subtitle
+  | 'paragraph' // -> content (multi-ligne)
+  | 'button' // -> button_text + button_link
+  | 'feature' // -> title + content (carte : titre + court texte)
+  | 'image' // -> image_url
+  | 'gallery'; // -> images[]
+
 export interface PageContent {
   id: string;
   page_key: string;
   page_name: string;
   section: string;
+  group?: string; // sous-section dans la page (ex: "Bannière", "Galerie")
+  field_type?: PageFieldType;
   title?: string;
   subtitle?: string;
   content?: string;
   button_text?: string;
   button_link?: string;
+  image_url?: string;
+  images?: string[];
   order_index: number;
   active: boolean;
   created_at?: string;

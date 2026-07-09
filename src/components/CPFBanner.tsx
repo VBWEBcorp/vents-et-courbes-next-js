@@ -1,15 +1,19 @@
 'use client';
 import React from 'react';
+import { useGlobalContent } from '../hooks/useGlobalContent';
+import { img } from '../services/pagesContent';
 
 interface CPFBannerProps {
   href: string;
   onCard?: boolean;
 }
 
-// Petit logo « Mon Compte Formation » (version carrée)
-const CPF_LOGO = 'https://i.ibb.co/GQfWb9vF/Mon-compte-formation-carr.png';
+// Petit logo « Mon Compte Formation » (version carrée) — repli si non édité.
+const DEFAULT_CPF_LOGO = 'https://i.ibb.co/GQfWb9vF/Mon-compte-formation-carr.png';
 
 const CPFBanner: React.FC<CPFBannerProps> = ({ href, onCard = false }) => {
+  const global = useGlobalContent();
+  const CPF_LOGO = img(global.cpf_logo, DEFAULT_CPF_LOGO);
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();

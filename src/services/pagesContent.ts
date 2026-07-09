@@ -6,6 +6,8 @@ export interface PageEntry {
   content: string | null;
   button_text: string | null;
   button_link: string | null;
+  image_url: string | null;
+  images: string[] | null;
   page_name: string;
 }
 
@@ -30,11 +32,28 @@ export const getPageContentBySection = async (
       content: page.content ?? null,
       button_text: page.button_text ?? null,
       button_link: page.button_link ?? null,
+      image_url: (page as { image_url?: string }).image_url ?? null,
+      images: (page as { images?: string[] }).images ?? null,
       page_name: page.page_name,
     };
   });
 
   return content;
+};
+
+/** Valeur image d'un bloc, avec repli sur l'image d'origine si non éditée. */
+export const img = (
+  entry: PageEntry | undefined,
+  fallback: string = '',
+): string => entry?.image_url || fallback;
+
+/** Liste d'images d'un bloc (galerie), avec repli sur les images d'origine. */
+export const imgs = (
+  entry: PageEntry | undefined,
+  fallback: string[] = [],
+): string[] => {
+  const list = entry?.images;
+  return Array.isArray(list) && list.length > 0 ? list : fallback;
 };
 
 export const t = (
