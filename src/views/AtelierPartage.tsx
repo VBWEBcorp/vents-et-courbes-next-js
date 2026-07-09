@@ -18,8 +18,8 @@ const AtelierPartage = () => {
       <Header />
       <AtelierPartageHero />
       <Gallery
-        title="Notre atelier partage en images"
-        description="Un espace de 100 m² entierement equipe au Pre-Saint-Gervais"
+        title="Notre atelier partagé en images"
+        description="Un espace de 100 m² entièrement équipé au Pré-Saint-Gervais"
       />
       <AtelierPartageFormules />
       <AtelierPartageDetails />

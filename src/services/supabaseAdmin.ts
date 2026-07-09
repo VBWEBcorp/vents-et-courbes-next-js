@@ -52,6 +52,7 @@ export interface Stage {
   monclub_url?: string;
   monclub_ids?: string[];
   sessions?: MonclubSession[];
+  cpf_link?: string;
   created_at?: string;
   updated_at?: string;
 }
@@ -76,6 +77,7 @@ export interface Cours {
   monclub_url?: string;
   monclub_ids?: string[];
   sessions?: MonclubSession[];
+  cpf_link?: string;
   created_at?: string;
   updated_at?: string;
 }
@@ -117,6 +119,45 @@ export interface PageContent {
   content?: string;
   button_text?: string;
   button_link?: string;
+  order_index: number;
+  active: boolean;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface SiteSettings {
+  id?: string;
+  business_name: string;
+  address: string;
+  postal_code: string;
+  city: string;
+  country: string;
+  phone: string;
+  phone_display: string;
+  email: string;
+  hours: Record<string, string[]>;
+  hours_note: string;
+  rating_value?: string;
+  rating_count?: string;
+  updated_at?: string;
+}
+
+export interface AtelierFormuleDoc {
+  id?: string;
+  slug: string;
+  name: string;
+  title: string;
+  subtitle: string;
+  price: string;
+  engagement_bonus: string;
+  bonus_value: string;
+  monclub_url?: string;
+  monclub_id?: string;
+  description: string;
+  includes: string;
+  seo_title: string;
+  seo_description: string;
+  popular: boolean;
   order_index: number;
   active: boolean;
   created_at?: string;
@@ -362,3 +403,39 @@ export const updatePage = (id: string, page: Partial<PageContent>) =>
 
 export const deletePage = (id: string) =>
   api(`/pages${qs({ id })}`, { method: 'DELETE' });
+
+// ------------------------------ Settings -------------------------------
+export const getSiteSettings = () => api<SiteSettings | null>('/settings');
+
+export const updateSiteSettings = (settings: Partial<SiteSettings>) =>
+  api<SiteSettings>('/settings', {
+    method: 'PUT',
+    body: JSON.stringify(settings),
+  });
+
+// -------------------------- Atelier formules ---------------------------
+export const getAllAtelierFormules = (includeInactive = false) =>
+  api<AtelierFormuleDoc[]>(`/atelier-formules${qs({ includeInactive })}`);
+
+export const getAtelierFormuleBySlugApi = (slug: string) =>
+  api<AtelierFormuleDoc>(`/atelier-formules${qs({ slug })}`);
+
+export const createAtelierFormule = (
+  formule: Omit<AtelierFormuleDoc, 'id' | 'created_at' | 'updated_at'>,
+) =>
+  api<AtelierFormuleDoc>('/atelier-formules', {
+    method: 'POST',
+    body: JSON.stringify(formule),
+  });
+
+export const updateAtelierFormule = (
+  id: string,
+  formule: Partial<AtelierFormuleDoc>,
+) =>
+  api<AtelierFormuleDoc>(`/atelier-formules${qs({ id })}`, {
+    method: 'PUT',
+    body: JSON.stringify(formule),
+  });
+
+export const deleteAtelierFormule = (id: string) =>
+  api(`/atelier-formules${qs({ id })}`, { method: 'DELETE' });

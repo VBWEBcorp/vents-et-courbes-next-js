@@ -63,3 +63,57 @@ export const ATELIER_FORMULES: AtelierFormule[] = [
 export const getAtelierFormuleBySlug = (slug: string): AtelierFormule | undefined => {
   return ATELIER_FORMULES.find((f) => f.slug === slug);
 };
+
+// Lien MonClub de l'activité « Atelier partagé » (fallback par défaut).
+export const ATELIER_MONCLUB_URL =
+  'https://ventsetcourbes.monclub.app/app/6a0ddc5aa91686a293060e8b';
+
+// Forme « base de données » d'une formule d'atelier (snake_case), partagée
+// entre l'admin, le front et le fallback build.
+export interface AtelierFormuleDoc {
+  id?: string;
+  slug: string;
+  name: string;
+  title: string;
+  subtitle: string;
+  price: string;
+  engagement_bonus: string;
+  bonus_value: string;
+  monclub_url?: string;
+  monclub_id?: string;
+  description: string;
+  includes: string;
+  seo_title: string;
+  seo_description: string;
+  popular: boolean;
+  order_index: number;
+  active: boolean;
+}
+
+// Convertit les formules codées en dur vers la forme DB. Sert de fallback
+// tant que la collection `atelier_formules` n'est pas renseignée, et de
+// source pour le bouton « importer les formules par défaut » de l'admin.
+export const hardcodedAtelierDocs = (): AtelierFormuleDoc[] =>
+  ATELIER_FORMULES.map((f, i) => ({
+    slug: f.slug,
+    name: f.name,
+    title: f.title,
+    subtitle: f.subtitle,
+    price: f.price,
+    engagement_bonus: f.engagementBonus,
+    bonus_value: f.bonusValue,
+    monclub_url: ATELIER_MONCLUB_URL,
+    monclub_id: '',
+    description: f.description,
+    includes: f.includes,
+    seo_title: f.seoTitle,
+    seo_description: f.seoDescription,
+    popular: Boolean(f.popular),
+    order_index: i,
+    active: true,
+  }));
+
+export const getHardcodedAtelierDoc = (
+  slug: string,
+): AtelierFormuleDoc | undefined =>
+  hardcodedAtelierDocs().find((f) => f.slug === slug);

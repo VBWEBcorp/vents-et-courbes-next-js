@@ -6,6 +6,9 @@ interface CPFBannerProps {
   onCard?: boolean;
 }
 
+// Petit logo « Mon Compte Formation » (version carrée)
+const CPF_LOGO = 'https://i.ibb.co/GQfWb9vF/Mon-compte-formation-carr.png';
+
 const CPFBanner: React.FC<CPFBannerProps> = ({ href, onCard = false }) => {
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -13,12 +16,19 @@ const CPFBanner: React.FC<CPFBannerProps> = ({ href, onCard = false }) => {
     window.open(href, '_blank', 'noopener,noreferrer');
   };
 
-  const img = (
-    <img
-      src="https://i.ibb.co/Kzh5fw8L/Mon-compte-formation-rectangle.png"
-      alt="Cette offre de formation est éligible à Mon Compte Formation"
-      className={`${onCard ? 'h-10' : 'h-12'} w-auto rounded-md shadow-md`}
-    />
+  const className = `inline-flex items-center gap-2 bg-[#000091] hover:bg-[#00007a] text-white font-medium rounded-full shadow-md transition-colors ${
+    onCard ? 'px-3 py-1.5 text-xs' : 'px-4 py-2.5 text-sm'
+  }`;
+
+  const content = (
+    <>
+      <img
+        src={CPF_LOGO}
+        alt="Mon Compte Formation"
+        className={`${onCard ? 'h-5 w-5' : 'h-6 w-6'} rounded bg-white object-contain flex-shrink-0`}
+      />
+      <span>Réserver via mon CPF</span>
+    </>
   );
 
   if (onCard) {
@@ -26,10 +36,10 @@ const CPFBanner: React.FC<CPFBannerProps> = ({ href, onCard = false }) => {
       <button
         type="button"
         onClick={handleClick}
-        className="inline-block hover:opacity-90 transition-opacity"
-        title="Cette offre est éligible au CPF - moncompteformation.gouv.fr"
+        className={className}
+        title="Réserver via mon CPF - moncompteformation.gouv.fr"
       >
-        {img}
+        {content}
       </button>
     );
   }
@@ -39,10 +49,10 @@ const CPFBanner: React.FC<CPFBannerProps> = ({ href, onCard = false }) => {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-block hover:opacity-90 transition-opacity"
-      title="Cette offre est éligible au CPF - moncompteformation.gouv.fr"
+      className={className}
+      title="Réserver via mon CPF - moncompteformation.gouv.fr"
     >
-      {img}
+      {content}
     </a>
   );
 };

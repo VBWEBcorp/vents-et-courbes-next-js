@@ -11,12 +11,32 @@ export const COLLECTIONS = {
   blogPosts: 'blog_posts',
   pages: 'pages',
   adminUsers: 'admin_users',
+  settings: 'settings',
+  atelierFormules: 'atelier_formules',
 } as const;
 
 // ------------------------------------------------------------------
 // Document types — string `id` (kept from the Supabase export so blog
 // author references stay valid). Mongo's own `_id` is never exposed.
 // ------------------------------------------------------------------
+export interface MonclubCreneau {
+  date: string;
+  start: string;
+  end: string;
+  places: number | null;
+  label: string;
+}
+
+export interface MonclubSession {
+  monclub_id: string;
+  label: string;
+  price: string;
+  date_debut: string;
+  date_fin: string;
+  lieu?: string;
+  creneaux: MonclubCreneau[];
+}
+
 export interface Stage {
   id: string;
   title: string;
@@ -35,6 +55,10 @@ export interface Stage {
   has_cuisson: boolean;
   order_index: number;
   active: boolean;
+  monclub_url?: string;
+  monclub_ids?: string[];
+  sessions?: MonclubSession[];
+  cpf_link?: string;
   created_at?: string;
   updated_at?: string;
 }
@@ -56,6 +80,10 @@ export interface Cours {
   has_cuisson: boolean;
   order_index: number;
   active: boolean;
+  monclub_url?: string;
+  monclub_ids?: string[];
+  sessions?: MonclubSession[];
+  cpf_link?: string;
   created_at?: string;
   updated_at?: string;
 }
@@ -109,6 +137,48 @@ export interface AdminUser {
   password_hash: string;
   role: string;
   created_at?: string;
+}
+
+// Paramètres généraux du site (coordonnées, horaires, footer). Document
+// unique identifié par id = 'site'.
+export interface SiteSettings {
+  id: string;
+  business_name: string;
+  address: string;
+  postal_code: string;
+  city: string;
+  country: string;
+  phone: string; // format lien tel: ex "+33 6 80 89 39 27"
+  phone_display: string; // format affiché ex "06 80 89 39 27"
+  email: string;
+  hours: Record<string, string[]>; // { lundi: ["14h – 17h", "19h – 22h"], ... }
+  hours_note: string;
+  rating_value?: string;
+  rating_count?: string;
+  updated_at?: string;
+}
+
+// Formule d'atelier partagé (résidence céramique). Éditable via l'admin.
+export interface AtelierFormule {
+  id: string;
+  slug: string;
+  name: string;
+  title: string;
+  subtitle: string;
+  price: string;
+  engagement_bonus: string;
+  bonus_value: string;
+  monclub_url?: string;
+  monclub_id?: string;
+  description: string;
+  includes: string;
+  seo_title: string;
+  seo_description: string;
+  popular: boolean;
+  order_index: number;
+  active: boolean;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export async function collection<T extends Document = Document>(

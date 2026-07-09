@@ -3,33 +3,33 @@ import React from 'react';
 import { Calendar, Flame, ClipboardCheck } from 'lucide-react';
 
 const horaires = [
-  { jour: 'Lundi', heures: 'De 07h a 23h' },
-  { jour: 'Mardi', heures: 'De 07h a 13h et de 17h a 23h' },
-  { jour: 'Mercredi', heures: 'De 13h a 19h' },
-  { jour: 'Jeudi', heures: 'De 07h a 19h' },
-  { jour: 'Vendredi', heures: 'De 07h a 23h' },
-  { jour: 'Samedi', heures: 'De 13h a 23h' },
-  { jour: 'Dimanche', heures: 'De 07h a 23h' },
+  { jour: 'Lundi', heures: 'De 07h à 23h' },
+  { jour: 'Mardi', heures: 'De 07h à 13h et de 17h à 23h' },
+  { jour: 'Mercredi', heures: 'De 13h à 19h' },
+  { jour: 'Jeudi', heures: 'De 07h à 19h' },
+  { jour: 'Vendredi', heures: 'De 07h à 23h' },
+  { jour: 'Samedi', heures: 'De 13h à 23h' },
+  { jour: 'Dimanche', heures: 'De 07h à 23h' },
 ];
 
 const cuissons = [
-  { label: '2 cuissons : biscuit + email perso.', prix: '12 EUR / kg' },
-  { label: '2 cuissons : biscuit + email atelier', prix: '15 EUR / kg' },
+  { label: '2 cuissons : biscuit + émail perso.', prix: '12 EUR / kg' },
+  { label: '2 cuissons : biscuit + émail atelier', prix: '15 EUR / kg' },
   { label: '1 cuisson biscuit', prix: '9 EUR / kg' },
 ];
 
 const cuissonsFour = [
-  { label: 'Biscuit + email perso.', prix: '110 EUR' },
-  { label: 'Biscuit + email atelier', prix: '125 EUR' },
+  { label: 'Biscuit + émail perso.', prix: '110 EUR' },
+  { label: 'Biscuit + émail atelier', prix: '125 EUR' },
 ];
 
 const prerequis = [
-  'Bonne connaissance de la ceramique',
-  'Etre autonome dans un atelier',
+  'Bonne connaissance de la céramique',
+  'Être autonome dans un atelier',
   'Savoir cohabiter avec d\'autres personnes',
-  'Savoir emailler',
+  'Savoir émailler',
   'Savoir tourner et/ou modeler',
-  'Capacite a developper un projet personnel',
+  'Capacité à développer un projet personnel',
 ];
 
 const AtelierPartageDetails: React.FC = () => {
@@ -57,7 +57,7 @@ const AtelierPartageDetails: React.FC = () => {
 
             <div className="bg-primary-400/10 rounded-xl p-4">
               <p className="text-gray-700 text-sm italic">
-                L'atelier est ouvert de 07h a 23h durant les vacances scolaires.
+                L'atelier est ouvert de 07h à 23h durant les vacances scolaires.
               </p>
             </div>
           </div>
@@ -70,7 +70,7 @@ const AtelierPartageDetails: React.FC = () => {
               </div>
 
               <p className="text-gray-600 text-sm mb-4">
-                Les cuissons sont facturees au poids selon les tarifs ci-dessous :
+                Les cuissons sont facturées au poids selon les tarifs ci-dessous :
               </p>
 
               <div className="space-y-3 mb-6">
@@ -101,7 +101,7 @@ const AtelierPartageDetails: React.FC = () => {
             <div className="bg-white rounded-3xl p-8 shadow-sm border border-stone-200">
               <div className="flex items-center mb-6">
                 <ClipboardCheck className="w-6 h-6 text-primary-400 mr-3" strokeWidth={1.5} />
-                <h3 className="text-2xl font-bold text-gray-900">Pre-requis</h3>
+                <h3 className="text-2xl font-bold text-gray-900">Pré-requis</h3>
               </div>
 
               <ul className="space-y-3">
@@ -129,7 +129,7 @@ const AtelierPartageDetails: React.FC = () => {
                 06.80.89.39.27
               </a>
             </p>
-            <p className="text-gray-500 text-sm">33 rue Danton - 93310 Le Pre-Saint-Gervais</p>
+            <p className="text-gray-500 text-sm">33 rue Danton - 93310 Le Pré-Saint-Gervais</p>
           </div>
         </div>
       </div>

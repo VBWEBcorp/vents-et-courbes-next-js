@@ -1,27 +1,31 @@
 'use client';
 import React from 'react';
 import NAP from './NAP';
+import { useSiteSettings } from '../lib/siteSettings';
 
 const Footer = () => {
+  const settings = useSiteSettings();
   return (
     <footer className="bg-white border-t border-gray-200 py-8 px-6">
       <div className="max-w-7xl mx-auto text-center">
         {/* Business Information with structured data */}
         <div className="mb-6" itemScope itemType="https://schema.org/LocalBusiness">
-          <meta itemProp="name" content="Atelier Vents et Courbes" />
-          <meta itemProp="telephone" content="+33680893927" />
-          <meta itemProp="email" content="contact@ventsetcourbes.org" />
+          <meta itemProp="name" content={settings.business_name} />
+          <meta itemProp="telephone" content={settings.phone.replace(/\s/g, '')} />
+          <meta itemProp="email" content={settings.email} />
           <div itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
-            <meta itemProp="streetAddress" content="33 Rue Danton" />
-            <meta itemProp="addressLocality" content="Le Pré-Saint-Gervais" />
-            <meta itemProp="postalCode" content="93310" />
+            <meta itemProp="streetAddress" content={settings.address} />
+            <meta itemProp="addressLocality" content={settings.city} />
+            <meta itemProp="postalCode" content={settings.postal_code} />
             <meta itemProp="addressCountry" content="FR" />
           </div>
-          <div itemProp="aggregateRating" itemScope itemType="https://schema.org/AggregateRating">
-            <meta itemProp="ratingValue" content="4.9" />
-            <meta itemProp="reviewCount" content="938" />
-            <meta itemProp="bestRating" content="5" />
-          </div>
+          {settings.rating_value && settings.rating_count && (
+            <div itemProp="aggregateRating" itemScope itemType="https://schema.org/AggregateRating">
+              <meta itemProp="ratingValue" content={settings.rating_value} />
+              <meta itemProp="reviewCount" content={settings.rating_count} />
+              <meta itemProp="bestRating" content="5" />
+            </div>
+          )}
         </div>
         
         {/* Logos côte à côte */}

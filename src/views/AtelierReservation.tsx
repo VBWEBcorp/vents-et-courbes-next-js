@@ -1,19 +1,43 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { ArrowLeft, Gift } from 'lucide-react';
-import { AtelierFormule } from '../lib/ateliers';
+import {
+  AtelierFormuleDoc,
+  getAtelierFormuleBySlugApi,
+} from '../services/supabaseAdmin';
+import { ATELIER_MONCLUB_URL } from '../lib/ateliers';
 
 interface AtelierReservationProps {
-  formule: AtelierFormule;
+  slug: string;
+  initialFormule: AtelierFormuleDoc;
 }
 
-// Lien d'inscription MonClub de l'activité « Atelier partagé »
-const MONCLUB_URL = 'https://ventsetcourbes.monclub.app/app/6a0ddc5aa91686a293060e8b';
+const AtelierReservation: React.FC<AtelierReservationProps> = ({
+  slug,
+  initialFormule,
+}) => {
+  // Snapshot build pour le SEO/1er rendu, puis mise à jour live depuis la base.
+  const [formule, setFormule] = useState<AtelierFormuleDoc>(initialFormule);
 
-const AtelierReservation: React.FC<AtelierReservationProps> = ({ formule }) => {
+  useEffect(() => {
+    let mounted = true;
+    getAtelierFormuleBySlugApi(slug).then(({ data }) => {
+      if (mounted && data) setFormule(data);
+    });
+    return () => {
+      mounted = false;
+    };
+  }, [slug]);
+
+  const monclubUrl = formule.monclub_url || ATELIER_MONCLUB_URL;
+  const bookingHref =
+    formule.monclub_id && monclubUrl.includes('/app/')
+      ? `${monclubUrl}${monclubUrl.includes('?') ? '&' : '?'}selectedMembership=${formule.monclub_id}&step=3`
+      : monclubUrl;
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -57,17 +81,21 @@ const AtelierReservation: React.FC<AtelierReservationProps> = ({ formule }) => {
               {formule.includes}
             </p>
 
-            <div className="bg-green-50 border border-green-200 rounded-xl p-4 flex items-start gap-3">
-              <Gift className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" strokeWidth={1.5} />
-              <div>
-                <p className="text-gray-800 font-medium">
-                  Avec engagement 10 à 12 mois : {formule.engagementBonus}
-                </p>
-                <p className="text-gray-600 text-sm">
-                  (d'une valeur de {formule.bonusValue} €)
-                </p>
+            {formule.engagement_bonus && (
+              <div className="bg-green-50 border border-green-200 rounded-xl p-4 flex items-start gap-3">
+                <Gift className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" strokeWidth={1.5} />
+                <div>
+                  <p className="text-gray-800 font-medium">
+                    Avec engagement 10 à 12 mois : {formule.engagement_bonus}
+                  </p>
+                  {formule.bonus_value && (
+                    <p className="text-gray-600 text-sm">
+                      (d'une valeur de {formule.bonus_value} €)
+                    </p>
+                  )}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </section>
@@ -85,7 +113,7 @@ const AtelierReservation: React.FC<AtelierReservationProps> = ({ formule }) => {
 
           <div className="text-center mb-4">
             <a
-              href={MONCLUB_URL}
+              href={bookingHref}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center bg-primary-400 hover:bg-primary-500 text-white px-8 py-3.5 rounded-full font-medium text-lg transition-colors shadow-lg"

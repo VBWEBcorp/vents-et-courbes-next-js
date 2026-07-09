@@ -1,35 +1,47 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import AtelierReservation from '@/views/AtelierReservation';
-import { ATELIER_FORMULES, getAtelierFormuleBySlug } from '@/lib/ateliers';
+import {
+  getActiveAtelierFormuleSlugs,
+  getAtelierFormuleBuild,
+} from '../../../lib/server/data';
 
 export async function generateStaticParams() {
-  return ATELIER_FORMULES.map((f) => ({ slug: f.slug }));
+  const slugs = await getActiveAtelierFormuleSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const formule = getAtelierFormuleBySlug(params.slug);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const formule = await getAtelierFormuleBuild(slug);
   if (!formule) {
-    return {
-      title: 'Atelier Partage - Vents et Courbes',
-    };
+    return { title: 'Atelier Partagé - Vents et Courbes' };
   }
   return {
-    title: formule.seoTitle,
-    description: formule.seoDescription,
+    title: formule.seo_title,
+    description: formule.seo_description,
     alternates: { canonical: `https://ventsetcourbes.org/atelier-partage/${formule.slug}` },
     openGraph: {
-      title: formule.seoTitle,
-      description: formule.seoDescription,
+      title: formule.seo_title,
+      description: formule.seo_description,
       url: `https://ventsetcourbes.org/atelier-partage/${formule.slug}`,
     },
   };
 }
 
-export default function AtelierFormulePage({ params }: { params: { slug: string } }) {
-  const formule = getAtelierFormuleBySlug(params.slug);
+export default async function AtelierFormulePage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const formule = await getAtelierFormuleBuild(slug);
   if (!formule) {
     notFound();
   }
-  return <AtelierReservation formule={formule} />;
+  return <AtelierReservation slug={slug} initialFormule={formule} />;
 }

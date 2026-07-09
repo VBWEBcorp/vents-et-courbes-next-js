@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { useSiteSettings } from '../lib/siteSettings';
 
 interface NAPProps {
   variant?: 'full' | 'minimal' | 'contact' | 'footer';
@@ -8,29 +9,23 @@ interface NAPProps {
   className?: string;
 }
 
-const NAP: React.FC<NAPProps> = ({ 
-  variant = 'full', 
-  showIcons = true, 
-  className = '' 
+const NAP: React.FC<NAPProps> = ({
+  variant = 'full',
+  showIcons = true,
+  className = ''
 }) => {
+  const settings = useSiteSettings();
   const businessInfo = {
-    name: "Atelier Vents et Courbes",
-    address: "33 Rue Danton",
-    city: "Le Pré-Saint-Gervais", 
-    postalCode: "93310",
-    country: "France",
-    phone: "+33 6 80 89 39 27",
-    phoneDisplay: "06 80 89 39 27",
-    email: "contact@ventsetcourbes.org",
-    hours: {
-      "lundi": "10:00-18:00",
-      "mardi": "10:00-18:00", 
-      "mercredi": "10:00-18:00",
-      "jeudi": "10:00-18:00",
-      "vendredi": "10:00-18:00",
-      "samedi": "10:00-16:00",
-      "dimanche": "Fermé"
-    }
+    name: settings.business_name,
+    address: settings.address,
+    city: settings.city,
+    postalCode: settings.postal_code,
+    country: settings.country,
+    phone: settings.phone,
+    phoneDisplay: settings.phone_display,
+    email: settings.email,
+    hours: settings.hours as Record<string, string[]>,
+    hoursNote: settings.hours_note,
   };
 
   if (variant === 'minimal') {
@@ -106,13 +101,20 @@ const NAP: React.FC<NAPProps> = ({
           <div>
             <div className="font-medium text-gray-900 mb-2">Horaires d'ouverture</div>
             <div className="text-sm text-gray-700 space-y-1" itemProp="openingHours">
-              {Object.entries(businessInfo.hours).map(([day, hours]) => (
-                <div key={day} className="flex justify-between min-w-[200px]">
+              {Object.entries(businessInfo.hours).map(([day, slots]) => (
+                <div key={day} className="flex justify-between gap-4 min-w-[220px]">
                   <span className="capitalize font-medium">{day}</span>
-                  <span className={hours === 'Fermé' ? 'text-red-600' : ''}>{hours}</span>
+                  <span className="text-right">
+                    {slots.map((slot, i) => (
+                      <span key={i} className={`block ${slot === 'Fermé' ? 'text-red-600' : ''}`}>
+                        {slot}
+                      </span>
+                    ))}
+                  </span>
                 </div>
               ))}
             </div>
+            <p className="text-sm text-gray-500 italic mt-3">{businessInfo.hoursNote}</p>
           </div>
         </div>
       </div>
@@ -203,13 +205,20 @@ const NAP: React.FC<NAPProps> = ({
           <div>
             <div className="font-medium mb-2">Horaires</div>
             <div className="text-sm space-y-1" itemProp="openingHours">
-              {Object.entries(businessInfo.hours).map(([day, hours]) => (
-                <div key={day} className="flex justify-between min-w-[180px]">
+              {Object.entries(businessInfo.hours).map(([day, slots]) => (
+                <div key={day} className="flex justify-between gap-4 min-w-[200px]">
                   <span className="capitalize">{day}</span>
-                  <span className={hours === 'Fermé' ? 'text-red-600' : ''}>{hours}</span>
+                  <span className="text-right">
+                    {slots.map((slot, i) => (
+                      <span key={i} className={`block ${slot === 'Fermé' ? 'text-red-600' : ''}`}>
+                        {slot}
+                      </span>
+                    ))}
+                  </span>
                 </div>
               ))}
             </div>
+            <p className="text-sm text-gray-500 italic mt-3">{businessInfo.hoursNote}</p>
           </div>
         </div>
       </div>

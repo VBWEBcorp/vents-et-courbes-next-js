@@ -8,6 +8,8 @@ import {
   GraduationCap,
   FileText,
   FileType,
+  Building2,
+  Settings,
   LogOut,
   Menu,
   X
@@ -60,6 +62,18 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subtitle }) 
       icon: FileType,
       path: '/admin/pages',
       color: 'text-blue-600 bg-blue-50'
+    },
+    {
+      title: 'Atelier partagé',
+      icon: Building2,
+      path: '/admin/atelier-partage',
+      color: 'text-purple-600 bg-purple-50'
+    },
+    {
+      title: 'Réglages',
+      icon: Settings,
+      path: '/admin/settings',
+      color: 'text-gray-700 bg-gray-100'
     }
   ];
 

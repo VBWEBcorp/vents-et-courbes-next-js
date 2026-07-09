@@ -12,6 +12,7 @@ import {
   Upload
 } from 'lucide-react';
 import AdminLayout from '../../components/admin/AdminLayout';
+import BookingFields from '../../components/admin/BookingFields';
 import {
   getAllCours,
   createCours,
@@ -39,6 +40,10 @@ const CoursManagement = () => {
     opco: '',
     reservation_slug: '',
     widget_id: '',
+    monclub_url: '',
+    monclub_ids: [],
+    sessions: [],
+    cpf_link: '',
     has_cuisson: false,
     order_index: 0,
     active: true
@@ -521,33 +526,25 @@ const CoursManagement = () => {
                 />
               </div>
 
-              {/* Reservation Slug & Widget ID */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Slug de réservation *
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.reservation_slug}
-                    onChange={(e) => setFormData({ ...formData, reservation_slug: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent"
-                    placeholder="Ex: tournage-annuel"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Widget ID *
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.widget_id}
-                    onChange={(e) => setFormData({ ...formData, widget_id: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent"
-                    placeholder="Ex: d460bea4-176a-41a4-821b-7aa85a887209"
-                  />
-                </div>
+              {/* Reservation Slug */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Slug de réservation *
+                </label>
+                <input
+                  type="text"
+                  value={formData.reservation_slug}
+                  onChange={(e) => setFormData({ ...formData, reservation_slug: e.target.value })}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent"
+                  placeholder="Ex: tournage-annuel"
+                />
+                <p className="text-xs text-gray-500 mt-1">
+                  L'URL sera: /reservation/[slug]
+                </p>
               </div>
+
+              {/* Réservation MonClub + CPF + widget hérité */}
+              <BookingFields formData={formData} setFormData={setFormData} accent="orange" />
 
               {/* Toggles */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

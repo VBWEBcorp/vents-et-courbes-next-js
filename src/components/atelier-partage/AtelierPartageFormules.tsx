@@ -1,10 +1,25 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Gift } from 'lucide-react';
-import { ATELIER_FORMULES } from '../../lib/ateliers';
+import { hardcodedAtelierDocs, AtelierFormuleDoc } from '../../lib/ateliers';
+import { getAllAtelierFormules } from '../../services/supabaseAdmin';
 
 const AtelierPartageFormules: React.FC = () => {
+  const [formules, setFormules] = useState<AtelierFormuleDoc[]>(
+    hardcodedAtelierDocs(),
+  );
+
+  useEffect(() => {
+    let mounted = true;
+    getAllAtelierFormules(false).then(({ data }) => {
+      if (mounted && data && data.length) setFormules(data);
+    });
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
   return (
     <section className="py-20 px-6 bg-white">
       <div className="max-w-5xl mx-auto">
@@ -16,7 +31,7 @@ const AtelierPartageFormules: React.FC = () => {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {ATELIER_FORMULES.map((formule, i) => (
+          {formules.map((formule, i) => (
             <div
               key={formule.slug}
               className={`relative rounded-3xl border-2 p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 ${
@@ -52,8 +67,8 @@ const AtelierPartageFormules: React.FC = () => {
                 <div className="flex items-start bg-green-50 rounded-xl p-3">
                   <Gift className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" strokeWidth={1.5} />
                   <div>
-                    <p className="text-gray-800 text-sm font-medium">{formule.engagementBonus}</p>
-                    <p className="text-gray-500 text-xs">(d'une valeur de {formule.bonusValue} €)</p>
+                    <p className="text-gray-800 text-sm font-medium">{formule.engagement_bonus}</p>
+                    <p className="text-gray-500 text-xs">(d'une valeur de {formule.bonus_value} €)</p>
                   </div>
                 </div>
               </div>

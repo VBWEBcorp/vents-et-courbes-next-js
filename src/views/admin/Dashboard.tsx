@@ -7,10 +7,12 @@ import {
   GraduationCap,
   FileText,
   FileType,
+  Building2,
+  Settings,
   TrendingUp
 } from 'lucide-react';
 import AdminLayout from '../../components/admin/AdminLayout';
-import { getAllStages, getAllCours, getAllArticles, getAllPages } from '../../services/supabaseAdmin';
+import { getAllStages, getAllCours, getAllArticles, getAllPages, getAllAtelierFormules } from '../../services/supabaseAdmin';
 
 const AdminDashboard = () => {
   const router = useRouter();
@@ -18,7 +20,8 @@ const AdminDashboard = () => {
     stages: 0,
     cours: 0,
     articles: 0,
-    pages: 0
+    pages: 0,
+    formules: 0
   });
   const [loading, setLoading] = useState(true);
 
@@ -28,18 +31,20 @@ const AdminDashboard = () => {
 
   const loadStats = async () => {
     try {
-      const [stagesRes, coursRes, articlesRes, pagesRes] = await Promise.all([
+      const [stagesRes, coursRes, articlesRes, pagesRes, formulesRes] = await Promise.all([
         getAllStages(true),
         getAllCours(true),
         getAllArticles(true),
-        getAllPages(true)
+        getAllPages(true),
+        getAllAtelierFormules(true)
       ]);
 
       setStats({
         stages: stagesRes.data?.length || 0,
         cours: coursRes.data?.length || 0,
         articles: articlesRes.data?.length || 0,
-        pages: pagesRes.data?.length || 0
+        pages: pagesRes.data?.length || 0,
+        formules: formulesRes.data?.length || 0
       });
     } catch (error) {
       console.error('Error loading stats:', error);
@@ -88,6 +93,26 @@ const AdminDashboard = () => {
       iconColor: 'text-blue-600',
       cardColor: 'bg-blue-600',
       link: '/admin/pages'
+    },
+    {
+      title: 'Atelier partagé',
+      description: 'Formules, prix, horaires',
+      icon: Building2,
+      count: stats.formules,
+      iconBg: 'bg-purple-100',
+      iconColor: 'text-purple-600',
+      cardColor: 'bg-purple-600',
+      link: '/admin/atelier-partage'
+    },
+    {
+      title: 'Réglages',
+      description: 'Coordonnées & horaires',
+      icon: Settings,
+      count: null,
+      iconBg: 'bg-gray-100',
+      iconColor: 'text-gray-700',
+      cardColor: 'bg-gray-700',
+      link: '/admin/settings'
     }
   ];
 
@@ -102,7 +127,7 @@ const AdminDashboard = () => {
         <>
           {/* Quick stats */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            {menuItems.map((item) => {
+            {menuItems.filter((item) => typeof item.count === 'number').map((item) => {
               const Icon = item.icon;
               return (
                 <div key={item.title} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
@@ -138,7 +163,9 @@ const AdminDashboard = () => {
                   </h3>
                   <p className="text-gray-600 mb-4">{item.description}</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-500">{item.count} élément(s)</span>
+                    <span className="text-sm text-gray-500">
+                      {typeof item.count === 'number' ? `${item.count} élément(s)` : 'Configurer'}
+                    </span>
                     <span className="text-green-400 font-medium group-hover:translate-x-1 transition-transform">
                       Gérer →
                     </span>

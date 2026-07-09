@@ -12,6 +12,7 @@ import {
   Upload
 } from 'lucide-react';
 import AdminLayout from '../../components/admin/AdminLayout';
+import BookingFields from '../../components/admin/BookingFields';
 import {
   getAllStages,
   createStage,
@@ -39,6 +40,10 @@ const StagesManagement = () => {
     opco: '',
     reservation_slug: '',
     widget_id: '',
+    monclub_url: '',
+    monclub_ids: [],
+    sessions: [],
+    cpf_link: '',
     has_cuisson: false,
     order_index: 0,
     active: true
@@ -521,39 +526,25 @@ const StagesManagement = () => {
                 />
               </div>
 
-              {/* Reservation Slug & Widget ID */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Slug de réservation *
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.reservation_slug}
-                    onChange={(e) => setFormData({ ...formData, reservation_slug: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-400 focus:border-transparent"
-                    placeholder="Ex: stage-tournage-ceramique"
-                  />
-                  <p className="text-xs text-gray-500 mt-1">
-                    L'URL sera: /reservation/[slug]
-                  </p>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Widget ID Regiondo *
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.widget_id}
-                    onChange={(e) => setFormData({ ...formData, widget_id: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-400 focus:border-transparent"
-                    placeholder="Ex: def0899d-1433-4bf7-8d47-b3049e431631"
-                  />
-                  <p className="text-xs text-gray-500 mt-1">
-                    Trouvez-le dans le code du widget Regiondo
-                  </p>
-                </div>
+              {/* Reservation Slug */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Slug de réservation *
+                </label>
+                <input
+                  type="text"
+                  value={formData.reservation_slug}
+                  onChange={(e) => setFormData({ ...formData, reservation_slug: e.target.value })}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-400 focus:border-transparent"
+                  placeholder="Ex: stage-tournage-ceramique"
+                />
+                <p className="text-xs text-gray-500 mt-1">
+                  L'URL sera: /reservation/[slug]
+                </p>
               </div>
+
+              {/* Réservation MonClub + CPF + widget hérité */}
+              <BookingFields formData={formData} setFormData={setFormData} accent="green" />
 
               {/* Toggles */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

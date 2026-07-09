@@ -30,3 +30,24 @@ export const CPF_LINK_FORMATION_PRO = 'https://www.moncompteformation.gouv.fr/es
 export const isEligibleCPF = (slug: string): boolean => slug in CPF_LINKS;
 
 export const getCPFLink = (slug: string): string | undefined => CPF_LINKS[slug];
+
+// ------------------------------------------------------------------
+// Version « par enregistrement » : le lien CPF est désormais éditable
+// directement sur chaque stage/cours (champ `cpf_link` dans l'admin).
+// On retombe sur l'ancienne map codée en dur si le champ est vide, pour
+// rester compatible avec les enregistrements pas encore renseignés.
+// ------------------------------------------------------------------
+interface CpfItem {
+  cpf_link?: string;
+  reservation_slug?: string;
+}
+
+export const getCpfLinkFor = (item: CpfItem): string | undefined => {
+  const link = item.cpf_link?.trim();
+  if (link) return link;
+  if (item.reservation_slug) return CPF_LINKS[item.reservation_slug];
+  return undefined;
+};
+
+export const isEligibleCPFItem = (item: CpfItem): boolean =>
+  Boolean(getCpfLinkFor(item));
