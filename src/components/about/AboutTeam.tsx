@@ -80,6 +80,19 @@ const AboutTeam: React.FC<AboutTeamProps> = ({ content }) => {
     }
   ];
 
+  // Chaque membre peut voir sa photo, son nom et son rôle édités via le CMS
+  // (repli sur les valeurs d'origine). Parcours/mission/Instagram restent
+  // définis ici.
+  const teamResolved: TeamMember[] = team.map((m, i) => {
+    const n = i + 1;
+    return {
+      ...m,
+      image: content[`team_${n}_image`]?.image_url || m.image,
+      name: content[`team_${n}_name`]?.title || m.name,
+      role: content[`team_${n}_role`]?.subtitle || m.role,
+    };
+  });
+
   const openMemberModal = (member: TeamMember) => {
     setSelectedMember(member);
   };
@@ -105,7 +118,7 @@ const AboutTeam: React.FC<AboutTeamProps> = ({ content }) => {
 
           {/* Team Grid - 4 columns */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((member, index) => (
+            {teamResolved.map((member, index) => (
               <div 
                 key={index}
                 className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300"

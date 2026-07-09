@@ -49,7 +49,7 @@ const FormationPro = () => {
         content={content}
         onQualiopiClick={() => setIsQualiopiModalOpen(true)}
       />
-      <FormationProGrid />
+      <FormationProGrid content={content} />
       <Footer />
 
       <QualiopiModal

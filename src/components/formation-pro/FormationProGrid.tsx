@@ -4,10 +4,20 @@ import { useState } from 'react';
 import DevisModal from '../DevisModal';
 import CPFBanner from '../CPFBanner';
 import { CPF_LINK_FORMATION_PRO } from '../../lib/cpf';
+import { SectionContent } from '../../services/pagesContent';
 
-const FormationProGrid = () => {
+const DEFAULT_CAP_IMG = 'https://i.ibb.co/JWg8sRD6/Formation-pro-photo.png';
+const DEFAULT_CREATEUR_IMG = 'https://i.ibb.co/5WkxqMTw/Formation-Cre-ation.jpg';
+
+interface FormationProGridProps {
+  content?: SectionContent;
+}
+
+const FormationProGrid: React.FC<FormationProGridProps> = ({ content }) => {
   const [isDevisModalOpen, setIsDevisModalOpen] = useState(false);
   const [selectedFormation, setSelectedFormation] = useState('');
+  const capImage = content?.cap_image?.image_url || DEFAULT_CAP_IMG;
+  const createurImage = content?.createur_image?.image_url || DEFAULT_CREATEUR_IMG;
 
   return (
     <>
@@ -26,7 +36,7 @@ const FormationProGrid = () => {
                   className="block w-full h-full"
                 >
                   <img
-                    src="https://i.ibb.co/JWg8sRD6/Formation-pro-photo.png"
+                    src={capImage}
                     alt="Formation CAP Tournage - Pratique du tournage en céramique"
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     loading="lazy"
@@ -159,7 +169,7 @@ const FormationProGrid = () => {
                   title="Voir le programme complet sur DIGIFORMA"
                 >
                   <img
-                    src="https://i.ibb.co/5WkxqMTw/Formation-Cre-ation.jpg"
+                    src={createurImage}
                     alt="Formation Créateur Céramique - Pratique de la céramique"
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     loading="lazy"

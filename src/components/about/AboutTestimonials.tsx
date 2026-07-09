@@ -1,8 +1,14 @@
 'use client';
 import React from 'react';
 import { Star } from 'lucide-react';
+import { useGlobalContent } from '../../hooks/useGlobalContent';
+import { img } from '../../services/pagesContent';
+
+const DEFAULT_GOOGLE_LOGO = 'https://i.ibb.co/Df5krkD6/GOOGLR.png';
 
 const AboutTestimonials = () => {
+  const global = useGlobalContent();
+  const googleLogo = img(global.google_logo, DEFAULT_GOOGLE_LOGO);
   const testimonials = [
     {
       name: "Sonia Soowambar",
@@ -88,7 +94,7 @@ const AboutTestimonials = () => {
         </div>
         {/* Google Logo */}
         <img 
-          src="https://i.ibb.co/Df5krkD6/GOOGLR.png" 
+          src={googleLogo}
           alt="Google" 
           className="w-4 h-4 ml-2 flex-shrink-0"
         />
@@ -128,7 +134,7 @@ const AboutTestimonials = () => {
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center">
               <img 
-                src="https://i.ibb.co/Df5krkD6/GOOGLR.png" 
+                src={googleLogo}
                 alt="Google" 
                 className="w-8 h-8 mr-3"
               />
@@ -176,7 +182,7 @@ const AboutTestimonials = () => {
             className="inline-flex items-center bg-gray-100 hover:bg-gray-200 text-gray-800 px-6 py-3 rounded-full text-sm font-medium transition-colors"
           >
             <img 
-              src="https://i.ibb.co/Df5krkD6/GOOGLR.png" 
+              src={googleLogo}
               alt="Google" 
               className="w-5 h-5 mr-3"
             />

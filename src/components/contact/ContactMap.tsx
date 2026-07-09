@@ -21,7 +21,7 @@ const ContactMap: React.FC<ContactMapProps> = ({ content }) => {
 
         <div className="rounded-2xl overflow-hidden shadow-lg">
           <img
-            src="https://i.ibb.co/TDVGN5c7/MAP-VC.png"
+            src={content.map_image?.image_url || 'https://i.ibb.co/TDVGN5c7/MAP-VC.png'}
             alt="Plan d'accès à l'atelier Vents et Courbes"
             className="w-full h-auto"
             loading="lazy"

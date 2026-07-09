@@ -121,8 +121,9 @@ export type PageFieldType =
   | 'title' // -> title
   | 'subtitle' // -> subtitle
   | 'paragraph' // -> content (multi-ligne)
-  | 'button' // -> button_text + button_link
+  | 'button' // -> button_text (+ button_link si présent)
   | 'feature' // -> title + content (carte : titre + court texte)
+  | 'compound' // -> tous les champs texte présents (titre + paragraphe + bouton)
   | 'image' // -> image_url
   | 'gallery'; // -> images[]
 

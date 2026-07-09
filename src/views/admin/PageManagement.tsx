@@ -52,6 +52,36 @@ const inferType = (p: PageContent): PageFieldType => {
 
 type Draft = Record<string, Partial<PageContent>>;
 
+// Un bloc n'est proposé à l'édition que s'il a du CONTENU à modifier :
+// - image / galerie : toujours (il y a toujours une image ou un repli) ;
+// - texte : seulement s'il contient déjà du texte (on n'invite jamais le
+//   client à « ajouter du texte » dans un champ vide).
+// Les lignes legacy (sans field_type) ne sont pas gérées ici → masquées.
+const nonEmpty = (v?: string | null) => !!(v && v.trim());
+const shouldShow = (b: PageContent): boolean => {
+  const t = b.field_type;
+  if (!t) return false;
+  switch (t) {
+    case 'image':
+    case 'gallery':
+      return true;
+    case 'title':
+      return nonEmpty(b.title);
+    case 'subtitle':
+      return nonEmpty(b.subtitle);
+    case 'paragraph':
+      return nonEmpty(b.content);
+    case 'feature':
+      return nonEmpty(b.title) || nonEmpty(b.content);
+    case 'compound':
+      return nonEmpty(b.title) || nonEmpty(b.content) || nonEmpty(b.button_text);
+    case 'button':
+      return nonEmpty(b.button_text);
+    default:
+      return true;
+  }
+};
+
 const PageManagement = () => {
   const [pages, setPages] = useState<PageContent[]>([]);
   const [loading, setLoading] = useState(true);
@@ -76,7 +106,7 @@ const PageManagement = () => {
 
   // Sections réellement présentes, dans l'ordre défini.
   const sections = useMemo(() => {
-    const present = new Set(pages.map((p) => p.section));
+    const present = new Set(pages.filter(shouldShow).map((p) => p.section));
     const ordered = SECTION_ORDER.filter((s) => present.has(s.key));
     const extras = [...present]
       .filter((s) => !SECTION_ORDER.some((o) => o.key === s))
@@ -95,6 +125,7 @@ const PageManagement = () => {
     () =>
       pages
         .filter((p) => p.section === selectedSection)
+        .filter(shouldShow)
         .sort((a, b) => (a.order_index ?? 0) - (b.order_index ?? 0)),
     [pages, selectedSection],
   );
@@ -297,6 +328,7 @@ const typeIcon: Record<PageFieldType, React.ElementType> = {
   paragraph: AlignLeft,
   button: MousePointer,
   feature: AlignLeft,
+  compound: AlignLeft,
   image: ImageIcon,
   gallery: ImageIcon,
 };
@@ -321,9 +353,9 @@ const BlockEditor: React.FC<BlockEditorProps> = ({
   const inputCls =
     'w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-400 focus:border-transparent outline-none';
 
-  // Bloc non encore migré (pas de field_type) : on affiche TOUS les champs
-  // présents, pour ne rien rendre inéditable.
-  if (!block.field_type) {
+  // Bloc « compound » (ou legacy sans field_type) : on affiche TOUS les champs
+  // texte présents (titre + paragraphe + bouton) pour ne rien rendre inéditable.
+  if (!block.field_type || block.field_type === 'compound') {
     const has = (f: keyof PageContent) => block[f] !== undefined;
     return (
       <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm space-y-3">
@@ -372,15 +404,17 @@ const BlockEditor: React.FC<BlockEditorProps> = ({
                 className={inputCls}
               />
             </div>
-            <div>
-              <span className="block text-xs text-gray-500 mb-1">Lien du bouton</span>
-              <input
-                type="text"
-                value={(val(block, 'button_link') as string) || ''}
-                onChange={(e) => setField(block, 'button_link', e.target.value)}
-                className={inputCls}
-              />
-            </div>
+            {has('button_link') && (
+              <div>
+                <span className="block text-xs text-gray-500 mb-1">Lien du bouton</span>
+                <input
+                  type="text"
+                  value={(val(block, 'button_link') as string) || ''}
+                  onChange={(e) => setField(block, 'button_link', e.target.value)}
+                  className={inputCls}
+                />
+              </div>
+            )}
           </div>
         )}
         {has('image_url') && (
@@ -467,17 +501,19 @@ const BlockEditor: React.FC<BlockEditorProps> = ({
               className={inputCls}
             />
           </div>
-          <div>
-            <span className="block text-xs text-gray-500 mb-1">
-              Lien (ex : /contact)
-            </span>
-            <input
-              type="text"
-              value={(val(block, 'button_link') as string) || ''}
-              onChange={(e) => setField(block, 'button_link', e.target.value)}
-              className={inputCls}
-            />
-          </div>
+          {block.button_link !== undefined && (
+            <div>
+              <span className="block text-xs text-gray-500 mb-1">
+                Lien (ex : /contact)
+              </span>
+              <input
+                type="text"
+                value={(val(block, 'button_link') as string) || ''}
+                onChange={(e) => setField(block, 'button_link', e.target.value)}
+                className={inputCls}
+              />
+            </div>
+          )}
         </div>
       )}
 

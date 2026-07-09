@@ -115,6 +115,7 @@ export type PageFieldType =
   | 'paragraph'
   | 'button'
   | 'feature'
+  | 'compound'
   | 'image'
   | 'gallery';
 

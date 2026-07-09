@@ -45,6 +45,9 @@ const BlogIndex = () => {
     });
   };
 
+  const fallbackImg =
+    content.fallback_image?.image_url || 'https://i.ibb.co/7w4BNrH/VC-image-galerie01.jpg';
+
   return (
     <div className="min-h-screen">
 
@@ -120,13 +123,13 @@ const BlogIndex = () => {
                     <Link href={`/blog/${article.slug}`} className="block">
                       <div className="relative overflow-hidden image-zoom">
                         <img
-                          src={article.image_url || "https://i.ibb.co/7w4BNrH/VC-image-galerie01.jpg"}
+                          src={article.image_url || fallbackImg}
                           alt={article.title}
                           className="w-full h-48 md:h-64 object-cover"
                           loading="lazy"
                           onError={(e) => {
                             const target = e.target as HTMLImageElement;
-                            target.src = "https://i.ibb.co/7w4BNrH/VC-image-galerie01.jpg";
+                            target.src = fallbackImg;
                           }}
                         />
                         <div className="absolute top-4 left-4">
